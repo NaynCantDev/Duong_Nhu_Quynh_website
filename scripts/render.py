@@ -20,9 +20,6 @@ ASSETS_DIR = TEMPLATE_DIR / "assets"
 STUDENTS_DIR = ROOT / "students"
 DIST_DIR = ROOT / "dist"
 
-MAX_PROJECT_SCORE = 4.0  # theo đề: Projects + 6 bài = 4.0 điểm
-
-
 def split_principles(text):
     """'Bộ 5 nguyên tắc: (1) A, (2) B' → ('Bộ 5 nguyên tắc:', ['A', 'B'])"""
     parts = re.split(r"\(\d+\)\s*", text or "")
@@ -58,14 +55,7 @@ def make_env():
 def load(student_id):
     with open(STUDENTS_DIR / student_id / "data.yaml", encoding="utf-8") as f:
         data = yaml.safe_load(f)
-    total = round(sum(float(p.get("score", 0)) for p in data["projects"]), 2)
-    data["total_score"] = total
-    data["max_score"] = MAX_PROJECT_SCORE
-    data["score_pct"] = round(min(total / MAX_PROJECT_SCORE, 1) * 100)
     data["slug"] = student_id
-    txt = f"{total:g}"
-    data["score_dec"] = max(1, len(txt.split(".")[1]) if "." in txt else 0)
-    data["total_score_txt"] = f"{total:.{data['score_dec']}f}"
     return data
 
 

@@ -16,12 +16,12 @@ dist/                        ← kết quả (tự sinh, không commit)
 ```bash
 pip install -r requirements.txt
 python scripts/render.py               # render tất cả
-python scripts/render.py demo_student  # render 1 người
+python scripts/render.py duong_nhu_quynh  # render 1 người
 ```
 Mở `dist/<ma_sv>/index.html` để xem. `dist/index.html` là trang danh sách tất cả portfolio.
 
 ## Thêm người mới
-1. Copy `students/demo_student/` thành `students/<ma_sv>/`
+1. Copy `students/duong_nhu_quynh/` thành `students/<ma_sv>/`
 2. Sửa `data.yaml`
 3. `git push` → GitHub Actions tự render và deploy lên GitHub Pages
    (URL: `https://<user>.github.io/Web_CNS_for_NUAEs/<ma_sv>/`)

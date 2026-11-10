@@ -4,23 +4,34 @@
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-text">
-      <div class="chip reveal">✦ {{ subject }}</div>
-      <h1 class="hero-name reveal" data-delay="1">Xin chào, mình là<br><span class="gradient-text">{{ name }}</span></h1>
+      <div class="chip reveal">🎼 {{ major }}{% if school %} · {{ school }}{% endif %}</div>
+      <h1 class="hero-name reveal" data-delay="1">Xin chào, mình là<br><span class="gradient-text script">{{ name }}</span></h1>
       <p class="hero-bio reveal" data-delay="2"><span class="typed" data-text="{{ short_bio }}">{{ short_bio }}</span><span class="caret"></span></p>
       <div class="hero-actions reveal" data-delay="3">
-        <a href="projects.html" class="btn btn-primary magnetic">Xem 6 bài tập <span class="arrow">→</span></a>
+        <a href="projects.html" class="btn btn-primary magnetic">♫ Xem 6 bài tập <span class="arrow">→</span></a>
         <a href="#about" class="btn btn-ghost magnetic">Về mình</a>
       </div>
     </div>
+
     <div class="hero-visual reveal" data-delay="2">
-      <div class="orb">
-        <div class="orb-ring"></div>
-        <div class="orb-ring r2"></div>
-        <div class="orb-core">{{ avatar_emoji }}</div>
+      <div class="vinyl-wrap">
+        <div class="vinyl">
+          <div class="vinyl-label">{{ avatar_emoji }}</div>
+        </div>
+        <div class="tonearm" aria-hidden="true"></div>
       </div>
-      <div class="float-tag t1">🤖 AI</div>
-      <div class="float-tag t2">💻 Web</div>
-      <div class="float-tag t3">📊 Data</div>
+      <div class="equalizer" aria-hidden="true">
+        {% for i in range(18) %}<span style="--i:{{ i }}"></span>{% endfor %}
+      </div>
+      <div class="float-tag t1">🎤 Thanh nhạc</div>
+      <div class="float-tag t2">🎹 Nhạc cụ</div>
+      <div class="float-tag t3">📚 Sư phạm</div>
+    </div>
+  </div>
+
+  <div class="staff-band" aria-hidden="true">
+    <div class="staff-track">
+      {% for n in '♪♫♩♬♪♫♬♩♪♫♩♬♪♫♬♩♪♫♩♬♪♫♬♩' %}<span class="sn" style="--h:{{ loop.index0 * 37 % 5 }}">{{ n }}</span>{% endfor %}
     </div>
   </div>
   <a href="#about" class="scroll-hint" aria-label="Cuộn xuống"><span></span></a>
@@ -29,15 +40,8 @@
 <section id="about" class="section">
   <div class="container">
     <div class="section-head reveal">
-      <span class="section-label">01 — About Me</span>
+      <span class="section-label">♪ 01 — About Me</span>
       <h2 class="section-title">Giới thiệu bản thân</h2>
-    </div>
-
-    <div class="stats">
-      <div class="stat glass reveal" data-delay="0"><div class="stat-num" data-count="{{ projects|length }}">{{ projects|length }}</div><div class="stat-label">Bài tập</div></div>
-      <div class="stat glass reveal" data-delay="1"><div class="stat-num" data-count="{{ total_score }}" data-decimals="{{ score_dec }}">{{ total_score_txt }}</div><div class="stat-label">/ {{ max_score }} điểm dự án</div></div>
-      <div class="stat glass reveal" data-delay="2"><div class="stat-num" data-count="{{ projects|length + 3 }}">{{ projects|length + 3 }}</div><div class="stat-label">Trang web</div></div>
-      <div class="stat glass reveal" data-delay="3"><div class="stat-num stat-text">{{ student_id }}</div><div class="stat-label">Mã sinh viên</div></div>
     </div>
 
     <div class="bento">
@@ -45,18 +49,31 @@
         <div class="card-icon">👋</div>
         <h3>Về mình</h3>
         <p>{{ about.intro }}</p>
+        <div class="chips">
+          <span class="chip sm">🎓 {{ major }}</span>
+          {% if student_id %}<span class="chip sm">🪪 {{ student_id }}</span>{% endif %}
+          {% if class %}<span class="chip sm">🏫 {{ class }}</span>{% endif %}
+        </div>
       </article>
-      <article class="card glass tilt reveal" data-delay="1">
+      <article class="card glass tilt reveal accent-rasp" data-delay="1">
+        <div class="card-icon">🎤</div>
+        <h3>Sở thích</h3>
+        <p class="big">{{ about.hobbies }}</p>
+        <div class="mini-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </article>
+      <article class="card glass reveal full">
         <div class="card-icon">🎯</div>
         <h3>Mục tiêu học tập</h3>
         <p>{{ about.learning_goal }}</p>
       </article>
-      <article class="card glass tilt reveal" data-delay="2">
-        <div class="card-icon">🎨</div>
-        <h3>Sở thích</h3>
-        <p>{{ about.hobbies }}</p>
+      {% if about.development %}
+      <article class="card glass reveal wide">
+        <div class="card-icon">🌱</div>
+        <h3>Phát triển &amp; định hướng cá nhân</h3>
+        <p>{{ about.development }}</p>
       </article>
-      <article class="card glass tilt reveal wide" data-delay="1">
+      {% endif %}
+      <article class="card glass tilt reveal accent-teal" data-delay="1">
         <div class="card-icon">🗂️</div>
         <h3>Mục tiêu Portfolio</h3>
         <p>{{ about.portfolio_goal }}</p>
@@ -68,8 +85,9 @@
 <section class="section cta-band">
   <div class="container">
     <div class="cta-box glass reveal">
+      <div class="cta-notes" aria-hidden="true">♪ ♫ ♬</div>
       <h2>Hành trình 6 chương học phần</h2>
-      <p class="muted">Từ quản lý tệp tin đến dùng AI có trách nhiệm — mỗi bài là một bước.</p>
+      <p class="muted">Mỗi bài tập là một nốt nhạc — ghép lại thành một bản nhạc hoàn chỉnh.</p>
       <a href="projects.html" class="btn btn-primary magnetic">Khám phá dự án <span class="arrow">→</span></a>
     </div>
   </div>

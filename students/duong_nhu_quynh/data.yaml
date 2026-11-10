@@ -1,23 +1,24 @@
-name: "Trần Minh Khoa"
-student_id: "B23DCVT123"
-class: "D23CQVT01-N"
+name: "Dương Như Quỳnh"
+student_id: ""
+class: ""
 subject: "Nhập môn Công nghệ số và ứng dụng trí tuệ nhân tạo"
-email: "khoa.tmb23@student.example.edu.vn"
-major: "Công nghệ Thông tin"
-avatar_emoji: "🎓"
-short_bio: "Sinh viên năm 2 ngành CNTT – đam mê lập trình web và trí tuệ nhân tạo."
+school: "Trường Đại học Sư phạm Nghệ thuật Trung ương"
+email: ""
+major: "Sư phạm Âm nhạc"
+avatar_emoji: "🎤"
+short_bio: "Sinh viên ngành Sư phạm Âm nhạc – yêu ca hát và mong muốn truyền cảm hứng âm nhạc cho học sinh."
 
 about:
-  intro: "Xin chào! Mình là Trần Minh Khoa, sinh viên năm 2 ngành Công nghệ Thông tin. Mình yêu thích khám phá công nghệ mới, đặc biệt là AI và lập trình web."
-  hobbies: "Lập trình, chơi cờ vua, đọc sách khoa học viễn tưởng, chụp ảnh."
-  learning_goal: "Nắm vững các kỹ năng số cốt lõi trong thời đại 4.0, biết cách sử dụng AI có trách nhiệm trong học tập và công việc, đồng thời xây dựng nền tảng để phát triển sự nghiệp trong lĩnh vực công nghệ."
-  portfolio_goal: "Portfolio này là nơi tổng hợp và trình bày các sản phẩm học tập trong học phần CNS&AI, giúp mình lưu trữ hành trình học tập và chia sẻ năng lực bản thân với nhà tuyển dụng trong tương lai."
+  intro: "Xin chào! Mình là Dương Như Quỳnh, sinh viên ngành Sư phạm Âm nhạc tại Trường Đại học Sư phạm Nghệ thuật Trung ương."
+  hobbies: "Hát"
+  learning_goal: "Trong quá trình học tập tại trường Đại học Sư phạm Nghệ thuật Trung ương, tôi đặt mục tiêu không ngừng trau dồi kiến thức chuyên môn, đặc biệt là lĩnh vực Sư phạm Âm nhạc. Tôi cố gắng học tập nghiêm túc, chủ động tìm tòi, nghiên cứu tài liệu và tích cực tham gia các hoạt động học tập trên lớp. Bên cạnh đó, tôi mong muốn nâng cao kỹ năng thanh nhạc, nhạc cụ, lý thuyết âm nhạc và phương pháp giảng dạy để có thể vận dụng tốt kiến thức vào thực tiễn. Phấn đấu đạt kết quả học tập tốt, hoàn thành đầy đủ các nhiệm vụ học tập và tích lũy kinh nghiệm cần thiết cho công việc sau này."
+  development: "Tôi định hướng phát triển bản thân trở thành một người có kiến thức, kỹ năng chuyên môn vững vàng, có trách nhiệm và lòng yêu nghề. Bên cạnh việc học tập, tôi sẽ chủ động rèn luyện kỹ năng giao tiếp, làm việc nhóm, khả năng sáng tạo và sự tự tin trước đám đông. Trong tương lai, tôi mong muốn trở thành một giáo viên Âm nhạc có chuyên môn tốt, nhiệt huyết với nghề và biết cách truyền cảm hứng, khơi dậy niềm yêu thích âm nhạc cho học sinh. Đồng thời, tôi sẽ không ngừng học hỏi, hoàn thiện bản thân và xây dựng lối sống tích cực để trở thành một người có ích cho gia đình và xã hội."
+  portfolio_goal: "Lưu trữ sản phẩm cá nhân để thuận tiện truy cập và chia sẻ."
 
 projects:
   - id: 1
     title: "Thao tác cơ bản với tệp tin và thư mục"
     chapter: "Chương 1 – Máy tính và các thiết bị ngoại vi"
-    score: 0.5
     objective: "Xây dựng cấu trúc thư mục tối ưu cho việc học tập, áp dụng quy tắc đặt tên tệp nhất quán để dễ tìm kiếm và quản lý."
     process: |
       Bước 1: Phân tích nhu cầu lưu trữ tài liệu học tập theo môn học và học kỳ.
@@ -33,7 +34,6 @@ projects:
   - id: 2
     title: "Tìm kiếm và đánh giá thông tin học thuật"
     chapter: "Chương 2 – Khai thác dữ liệu và thông tin"
-    score: 0.75
     objective: "Thành thạo sử dụng toán tử tìm kiếm nâng cao (Boolean operators) trên Google Scholar và các cơ sở dữ liệu học thuật; đánh giá độ tin cậy của nguồn thông tin."
     process: |
       Bước 1: Học các toán tử Boolean (AND, OR, NOT) và ký tự đặc biệt ("", site:, filetype:).
@@ -56,7 +56,6 @@ projects:
   - id: 3
     title: "Viết Prompt hiệu quả cho các tác vụ học tập"
     chapter: "Chương 3 – Tổng quan về trí tuệ nhân tạo"
-    score: 0.75
     objective: "Hiểu cơ chế hoạt động cơ bản của LLM và kỹ thuật prompt engineering; so sánh chất lượng đầu ra giữa prompt đơn giản và prompt được thiết kế tốt."
     process: |
       Bước 1: Nghiên cứu khung RASCEF (Role, Action, Steps, Context, Example, Format).
@@ -80,7 +79,6 @@ projects:
   - id: 4
     title: "Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm"
     chapter: "Chương 4 – Giao tiếp và hợp tác trong môi trường số"
-    score: 0.5
     objective: "Thành thạo sử dụng ít nhất 2 công cụ hợp tác trực tuyến để quản lý dự án nhóm; xây dựng quy trình làm việc số hiệu quả."
     process: |
       Bước 1: Nhóm 4 người thống nhất dùng Trello (quản lý task) và Google Docs (soạn thảo chung).
@@ -96,7 +94,6 @@ projects:
   - id: 5
     title: "Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung"
     chapter: "Chương 5 – Sáng tạo nội dung số"
-    score: 1.0
     objective: "Thực hành sử dụng công cụ AI tạo sinh (Generative AI) để sáng tạo và chỉnh sửa nội dung số; đánh giá vai trò và giới hạn của AI trong sáng tạo."
     process: |
       Bước 1: Lên ý tưởng infographic về "5 kỹ năng số sinh viên cần trong thế kỷ 21".
@@ -113,7 +110,6 @@ projects:
   - id: 6
     title: "Sử dụng AI có trách nhiệm trong học tập và nghiên cứu"
     chapter: "Chương 6 – An toàn và liêm chính học thuật trong môi trường số"
-    score: 0.5
     objective: "Xây dựng bộ nguyên tắc cá nhân về sử dụng AI có trách nhiệm; nhận biết ranh giới giữa hỗ trợ AI hợp lệ và vi phạm liêm chính học thuật."
     process: |
       Bước 1: Nghiên cứu chính sách AI của 3 trường đại học uy tín (MIT, NUS, ĐHQG Hà Nội).

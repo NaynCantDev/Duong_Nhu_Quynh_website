@@ -6,10 +6,9 @@
   <div class="watermark" aria-hidden="true">{{ '%02d' % p.id }}</div>
   <div class="container">
     <nav class="breadcrumb reveal"><a href="index.html">Trang chủ</a><span>/</span><a href="projects.html">Dự án</a><span>/</span>Bài {{ p.id }}</nav>
-    <span class="section-label reveal">Bài {{ p.id }} · {{ p.chapter }}</span>
+    <span class="section-label reveal">♪ Bài {{ p.id }} · {{ p.chapter }}</span>
     <h1 class="page-title reveal" data-delay="1">{{ p.title }}</h1>
     <div class="meta-row reveal" data-delay="2">
-      <span class="chip">⭐ {{ p.score }} điểm</span>
       <span class="chip">🛠 {{ p.tool }}</span>
       <span class="chip ai">🤖 {{ p.ai_use }}</span>
     </div>
@@ -29,7 +28,7 @@
         {% for line in p.process.strip().split('\n') if line.strip() %}
         {% set kind = line.strip()|step_kind %}
         <li class="tl-item {{ kind }} reveal" data-delay="{{ loop.index0 % 4 }}">
-          <span class="tl-dot">{{ '⚠' if kind == 'challenge' else ('🤖' if kind == 'ai' else loop.index) }}</span>
+          <span class="tl-dot">{{ '⚠' if kind == 'challenge' else ('🤖' if kind == 'ai' else '♪') }}</span>
           <div class="tl-body">{{ line.strip() }}</div>
         </li>
         {% endfor %}

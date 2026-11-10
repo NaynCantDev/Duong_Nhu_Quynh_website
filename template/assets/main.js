@@ -84,6 +84,54 @@
     setTimeout(type, 700);
   }
 
+  /* 11. Nốt nhạc bay lên ở nền */
+  const NOTES = ['♪', '♫', '♬', '♩', '𝄞'];
+  const COLORS = ['#db5375', '#ec9192', '#729ea1', '#b5bd89', '#d9a66f'];
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+  const layer = $('.notes-layer');
+  const spawnNote = () => {
+    if (!layer || document.hidden) return;
+    const n = document.createElement('span');
+    n.className = 'fnote';
+    n.textContent = pick(NOTES);
+    const size = 16 + Math.random() * 30;
+    n.style.left = (Math.random() * 100) + 'vw';
+    n.style.fontSize = size + 'px';
+    n.style.setProperty('--c', pick(COLORS));
+    n.style.setProperty('--dur', (11 + Math.random() * 9) + 's');
+    n.style.setProperty('--dx', ((Math.random() - 0.5) * 160) + 'px');
+    n.style.setProperty('--rot', ((Math.random() - 0.5) * 60) + 'deg');
+    n.style.setProperty('--op', (0.25 + Math.random() * 0.35).toFixed(2));
+    layer.appendChild(n);
+    n.addEventListener('animationend', () => n.remove());
+  };
+  if (!reduce) {
+    for (let i = 0; i < 6; i++) setTimeout(spawnNote, i * 600);
+    setInterval(spawnNote, innerWidth < 760 ? 1800 : 1100);
+  }
+
+  /* 12. Click / chạm → bung nốt nhạc */
+  if (!reduce) {
+    addEventListener('pointerdown', e => {
+      for (let i = 0; i < 6; i++) {
+        const b = document.createElement('span');
+        b.className = 'burst';
+        b.textContent = pick(NOTES.slice(0, 4));
+        const ang = (Math.PI * 2 * i) / 6 + Math.random() * 0.6;
+        const dist = 40 + Math.random() * 40;
+        b.style.left = e.clientX + 'px';
+        b.style.top = e.clientY + 'px';
+        b.style.fontSize = (14 + Math.random() * 12) + 'px';
+        b.style.setProperty('--c', pick(COLORS));
+        b.style.setProperty('--bx', Math.cos(ang) * dist + 'px');
+        b.style.setProperty('--by', Math.sin(ang) * dist - 20 + 'px');
+        b.style.setProperty('--br', ((Math.random() - 0.5) * 90) + 'deg');
+        document.body.appendChild(b);
+        b.addEventListener('animationend', () => b.remove());
+      }
+    }, { passive: true });
+  }
+
   if (reduce || !finePointer) return;
 
   /* 7. Spotlight theo chuột */

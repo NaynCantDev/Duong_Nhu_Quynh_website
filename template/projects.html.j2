@@ -4,8 +4,8 @@
 <section class="page-hero">
   <div class="container">
     <nav class="breadcrumb reveal"><a href="index.html">Trang chủ</a><span>/</span>Dự án</nav>
-    <span class="section-label reveal">02 — Projects</span>
-    <h1 class="page-title reveal" data-delay="1">Dự án &amp; <span class="gradient-text">Bài tập</span></h1>
+    <span class="section-label reveal">♫ 02 — Projects</span>
+    <h1 class="page-title reveal" data-delay="1">Dự án &amp; <span class="gradient-text script">Bài tập</span></h1>
     <p class="page-sub reveal" data-delay="2">6 bài tập tương ứng 6 chương của học phần. Bấm vào từng thẻ để xem mục tiêu, quá trình và sản phẩm.</p>
   </div>
 </section>
@@ -13,25 +13,23 @@
 <section class="section pt-0">
   <div class="container">
     <div class="overview glass reveal">
-      <div class="ring" style="--pct: {{ score_pct }}">
-        <svg viewBox="0 0 120 120"><circle class="ring-bg" cx="60" cy="60" r="52"/><circle class="ring-fg" cx="60" cy="60" r="52"/></svg>
-        <div class="ring-label"><strong data-count="{{ total_score }}" data-decimals="{{ score_dec }}">{{ total_score_txt }}</strong><span>/ {{ max_score }}</span></div>
-      </div>
+      <div class="ov-icon" aria-hidden="true"><span>𝄞</span></div>
       <div class="overview-text">
         <h3>Tổng quan</h3>
-        <p class="muted">Tổng điểm 6 bài tập đạt <strong>{{ total_score }}</strong> trên thang <strong>{{ max_score }}</strong> điểm. Các bài trải dài từ kỹ năng máy tính cơ bản, khai thác thông tin, AI, hợp tác số, sáng tạo nội dung đến liêm chính học thuật.</p>
+        <p class="muted">Các bài tập trải dài từ kỹ năng máy tính cơ bản, khai thác thông tin, trí tuệ nhân tạo, hợp tác trong môi trường số, sáng tạo nội dung số đến an toàn và liêm chính học thuật.</p>
         <div class="chips">
-          {% for p in projects %}<span class="chip sm">{{ p.chapter.split('–')[0].strip() }}</span>{% endfor %}
+          {% for p in projects %}<a href="project-{{ p.id }}.html" class="chip sm link">{{ p.chapter.split('–')[0].strip() }}</a>{% endfor %}
         </div>
       </div>
     </div>
 
     <div class="project-grid">
+      {% set icons = ['💾','🔎','🤖','🤝','🎨','🛡️'] %}
       {% for p in projects %}
-      <a href="project-{{ p.id }}.html" class="pcard glass tilt reveal" data-delay="{{ loop.index0 % 3 }}">
+      <a href="project-{{ p.id }}.html" class="pcard glass tilt reveal c{{ loop.index0 % 5 }}" data-delay="{{ loop.index0 % 3 }}">
         <div class="pcard-top">
           <span class="pnum">{{ '%02d' % p.id }}</span>
-          <span class="pscore">{{ p.score }} đ</span>
+          <span class="picon">{{ icons[loop.index0 % 6] }}</span>
         </div>
         <div class="pchapter">{{ p.chapter }}</div>
         <h3 class="ptitle">{{ p.title }}</h3>
