@@ -1,12 +1,175 @@
 {% extends "_base.html.j2" %}
 {% block title %}Bài {{ project.id }} – {{ project.title }}{% endblock %}
+
+{# ================= Block renderers ================= #}
+{% macro render_block(b) %}
+{% if b.title and b.type not in ['tree', 'showcase'] %}<h3 class="sub-title reveal">{{ b.title }}</h3>{% endif %}
+
+{% if b.type == 'tree' %}
+<div class="explorer reveal">
+  <div class="explorer-bar"><i></i><i></i><i></i><span>📁 {{ b.title }}</span></div>
+  <ul class="tree">
+    <li class="root"><span class="tnode">📂 <strong>{{ b.title }}</strong></span>
+      <ul>
+      {% for it in b['items'] %}
+        <li><span class="tnode">{{ '📂' if it.children else '📁' }} {{ it.name }}</span>
+          {% if it.children %}<ul>{% for c in it.children %}<li><span class="tnode leaf">📁 {{ c }}</span></li>{% endfor %}</ul>{% endif %}
+        </li>
+      {% endfor %}
+      </ul>
+    </li>
+  </ul>
+</div>
+
+{% elif b.type == 'table' %}
+<div class="table-wrap reveal">
+  <table>
+    <thead><tr>{% for h in b.headers %}<th>{{ h }}</th>{% endfor %}</tr></thead>
+    <tbody>{% for r in b.rows %}<tr>{% for c in r %}<td>{{ c }}</td>{% endfor %}</tr>{% endfor %}</tbody>
+  </table>
+</div>
+
+{% elif b.type == 'examples' %}
+<div class="file-list reveal">
+  {% for f in b['items'] %}
+  {% set ext = f.rsplit('.', 1)[-1] %}
+  <div class="file-item"><span class="ext ext-{{ ext }}">{{ ext }}</span><code>{{ f }}</code></div>
+  {% endfor %}
+</div>
+
+{% elif b.type == 'queries' %}
+<div class="queries">
+  {% for q in b['items'] %}
+  <div class="query reveal" data-delay="{{ loop.index0 % 3 }}">
+    <div class="q-search"><span class="q-icon">🔍</span><code>{{ q.q }}</code></div>
+    <div class="q-meta"><span class="chip sm op">{{ q.op }}</span><span>{{ q.why }}</span></div>
+  </div>
+  {% endfor %}
+</div>
+
+{% elif b.type == 'prompts' %}
+<div class="prompt-pairs">
+  {% for it in b['items'] %}
+  <div class="pair reveal">
+    <div class="pair-task"><span class="pair-num">{{ loop.index }}</span>{{ it.task }}</div>
+    <div class="compare">
+      <div class="cbox before">
+        <div class="clabel">❌ Prompt ban đầu</div>
+        <div class="cprompt">{{ it.before.prompt }}</div>
+        <div class="cout"><span>Kết quả AI</span>{{ it.before.output }}</div>
+      </div>
+      <div class="cvs">VS</div>
+      <div class="cbox after">
+        <div class="clabel">✅ Prompt cải tiến</div>
+        <div class="cprompt">{{ it.after.prompt }}</div>
+        <div class="cout"><span>Kết quả AI</span>{{ it.after.output }}</div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% elif b.type == 'scores' %}
+<div class="scores reveal">
+  <div class="score-legend"><span class="lg before">Prompt ban đầu</span><span class="lg after">Prompt cải tiến</span></div>
+  {% for c in b.criteria %}
+  <div class="score-row">
+    <div class="score-name">{{ c }}</div>
+    <div class="bars">
+      <div class="bar before" style="--w: {{ b.before[loop.index0] * 20 }}%"><span>{{ b.before[loop.index0] }}/5</span></div>
+      <div class="bar after" style="--w: {{ b.after[loop.index0] * 20 }}%"><span>{{ b.after[loop.index0] }}/5</span></div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% elif b.type == 'kanban' %}
+<div class="kanban reveal">
+  {% for col in b.columns %}
+  <div class="kcol k{{ loop.index0 }}">
+    <div class="khead">{{ col.name }} <span>{{ col.cards|length }}</span></div>
+    {% for c in col.cards %}
+    <div class="kcard"><div class="kt">{{ c.t }}</div><div class="kmeta"><span>👤 {{ c.who }}</span><span>📅 {{ c.due }}</span></div></div>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+
+{% elif b.type == 'roles' %}
+<div class="roles">
+  {% for r in b['items'] %}
+  <div class="role reveal" data-delay="{{ loop.index0 % 3 }}"><span class="role-icon">{{ r.icon }}</span><div><strong>{{ r.who }}</strong><p>{{ r.task }}</p></div></div>
+  {% endfor %}
+</div>
+
+{% elif b.type == 'flow' %}
+<div class="flow reveal">
+  {% for s in b['items'] %}<div class="flow-step"><span>{{ loop.index }}</span>{{ s }}</div>{% if not loop.last %}<div class="flow-arrow">♪</div>{% endif %}{% endfor %}
+</div>
+
+{% elif b.type == 'showcase' %}
+<div class="showcase reveal">
+  <div class="sc-head">
+    <div class="sc-notes" aria-hidden="true">♪ ♫ ♬</div>
+    <h3>{{ b.title }}</h3>
+    {% if b.subtitle %}<p>{{ b.subtitle }}</p>{% endif %}
+  </div>
+  <div class="sc-steps">
+    {% for s in b.steps %}
+    <div class="sc-step reveal" data-delay="{{ loop.index0 % 3 }}">
+      <div class="sc-num">{{ loop.index }}</div>
+      <div class="sc-icon">{{ s.icon }}</div>
+      <h4>{{ s.t }}</h4>
+      <p>{{ s.d }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% elif b.type == 'split' %}
+<div class="split reveal">
+  {% for it in b['items'] %}
+  <div class="split-row"><div class="split-label">{{ it.label }}</div><div class="split-bar s{{ loop.index0 }}" style="--w: {{ it.pct }}%"><span>{{ it.pct }}%</span></div></div>
+  {% endfor %}
+</div>
+
+{% elif b.type == 'principles' %}
+<div class="principles">
+  {% for it in b['items'] %}
+  <div class="principle reveal" data-delay="{{ loop.index0 % 3 }}">
+    <span class="principle-num">{{ loop.index }}</span>
+    <div><strong>{{ it.t }}</strong><p>{{ it.d }}</p></div>
+  </div>
+  {% endfor %}
+</div>
+
+{% elif b.type == 'scenarios' %}
+<div class="scenarios">
+  {% set labels = {'ok': '✅ Hợp lệ', 'gray': '⚠️ Vùng xám', 'bad': '❌ Vi phạm'} %}
+  {% for it in b['items'] %}
+  <div class="scenario v-{{ it.v }} reveal">
+    <span class="verdict">{{ labels[it.v] }}</span>
+    <div><strong>{{ it.s }}</strong><p>{{ it.r }}</p></div>
+  </div>
+  {% endfor %}
+</div>
+
+{% elif b.type == 'refs' %}
+<ol class="refs reveal">{% for r in b['items'] %}<li>{{ r }}</li>{% endfor %}</ol>
+
+{% elif b.type == 'note' %}
+<div class="callout reveal"><span>💡</span><p>{{ b.text }}</p></div>
+{% endif %}
+{% endmacro %}
+
+{# ================= Page ================= #}
 {% block content %}
 {% set p = project %}
 <section class="page-hero project-hero">
   <div class="watermark" aria-hidden="true">{{ '%02d' % p.id }}</div>
   <div class="container">
     <nav class="breadcrumb reveal"><a href="index.html">Trang chủ</a><span>/</span><a href="projects.html">Dự án</a><span>/</span>Bài {{ p.id }}</nav>
-    <span class="section-label reveal">♪ Bài {{ p.id }} · {{ p.chapter }}</span>
+    <span class="section-label reveal">♪ Bài {{ p.id }}{% if p.section %} · Mục {{ p.section }}{% endif %} · {{ p.chapter }}</span>
     <h1 class="page-title reveal" data-delay="1">{{ p.title }}</h1>
     <div class="meta-row reveal" data-delay="2">
       <span class="chip">🛠 {{ p.tool }}</span>
@@ -18,14 +181,15 @@
 <section class="section pt-0">
   <div class="container detail">
     <article class="block glass reveal">
-      <div class="block-head"><span class="block-icon">🎯</span><h2>Mục tiêu</h2></div>
+      <div class="block-head"><span class="block-icon">🎯</span><h2>Mục tiêu bài tập</h2></div>
       <p class="lead">{{ p.objective }}</p>
     </article>
 
     <article class="block glass reveal">
       <div class="block-head"><span class="block-icon">⚙️</span><h2>Quá trình thực hiện</h2></div>
+      {% set steps = p.process if p.process is not string else p.process.strip().split('\n') %}
       <ol class="timeline">
-        {% for line in p.process.strip().split('\n') if line.strip() %}
+        {% for line in steps if line.strip() %}
         {% set kind = line.strip()|step_kind %}
         <li class="tl-item {{ kind }} reveal" data-delay="{{ loop.index0 % 4 }}">
           <span class="tl-dot">{{ '⚠' if kind == 'challenge' else ('🤖' if kind == 'ai' else '♪') }}</span>
@@ -36,56 +200,31 @@
     </article>
 
     <article class="block glass reveal">
-      <div class="block-head"><span class="block-icon">📦</span><h2>Sản phẩm</h2></div>
-      {% set pr = p.result_desc|principles %}
-      {% if pr %}
-        <p class="lead">{{ pr.head }}</p>
-        <div class="principles">
-          {% for it in pr['items'] %}
-          <div class="principle reveal" data-delay="{{ loop.index0 % 3 }}">
-            <span class="principle-num">{{ loop.index }}</span><span>{{ it }}</span>
-          </div>
+      <div class="block-head"><span class="block-icon">📦</span><h2>Sản phẩm cuối cùng</h2></div>
+      {% if p.product %}
+        {% if p.product.intro %}<p class="lead">{{ p.product.intro }}</p>{% endif %}
+        {% for b in p.product.blocks %}<div class="pblock">{{ render_block(b) }}</div>{% endfor %}
+
+        {% if p.product.gallery %}
+        <h3 class="sub-title reveal">Ảnh minh họa</h3>
+        <div class="gallery">
+          {% for g in p.product.gallery %}
+          <figure class="reveal" data-delay="{{ loop.index0 % 3 }}"><a href="{{ g.src }}" target="_blank" rel="noopener"><img src="{{ g.src }}" alt="{{ g.caption }}" loading="lazy"></a><figcaption>{{ g.caption }}</figcaption></figure>
           {% endfor %}
         </div>
+        {% endif %}
+
+        {% if p.product.video %}
+        <div class="video reveal"><iframe src="{{ p.product.video }}" title="Video sản phẩm" allowfullscreen loading="lazy"></iframe></div>
+        {% endif %}
+
+        {% if p.product.links %}
+        <div class="links">
+          {% for l in p.product.links %}<a class="btn btn-ghost sm" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.icon or '🔗' }} {{ l.label }}</a>{% endfor %}
+        </div>
+        {% endif %}
       {% else %}
         <p class="lead">{{ p.result_desc }}</p>
-      {% endif %}
-
-      {% if p.table_rows %}
-      <div class="table-wrap">
-        <table>
-          <thead><tr>{% for h in p.table_headers %}<th>{{ h }}</th>{% endfor %}</tr></thead>
-          <tbody>{% for r in p.table_rows %}<tr>{% for c in r %}<td>{{ c }}</td>{% endfor %}</tr>{% endfor %}</tbody>
-        </table>
-      </div>
-      {% elif p.result_img %}
-      <div class="terminal">
-        <div class="term-bar"><i></i><i></i><i></i><span>tree</span></div>
-        <div class="term-body">{{ p.result_img }}</div>
-      </div>
-      {% endif %}
-
-      {% if p.prompt_comparison %}
-      {% set pc = p.prompt_comparison %}
-      <div class="compare">
-        <div class="cbox before">
-          <div class="clabel">❌ {{ pc.before.label }}</div>
-          <div class="cprompt">{{ pc.before.content }}</div>
-          <div class="cout"><span>Kết quả</span>{{ pc.before.output }}</div>
-        </div>
-        <div class="cvs">VS</div>
-        <div class="cbox after">
-          <div class="clabel">✅ {{ pc.after.label }}</div>
-          <div class="cprompt">{{ pc.after.content }}</div>
-          <div class="cout"><span>Kết quả</span>{{ pc.after.output }}</div>
-        </div>
-      </div>
-      {% endif %}
-
-      {% if p.links %}
-      <div class="links">
-        {% for l in p.links %}<a class="btn btn-ghost sm" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.icon or '🔗' }} {{ l.label }}</a>{% endfor %}
-      </div>
       {% endif %}
     </article>
 

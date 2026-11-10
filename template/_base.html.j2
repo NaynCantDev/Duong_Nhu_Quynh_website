@@ -28,7 +28,13 @@
     <button class="hamburger" id="hamburger" aria-label="Mở menu"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html" class="{{ 'active' if page == 'home' }}">♪ Giới thiệu</a></li>
-      <li><a href="projects.html" class="{{ 'active' if page == 'projects' }}">♫ Dự án</a></li>
+      <li class="has-sub">
+        <a href="projects.html" class="{{ 'active' if page == 'projects' }}">♫ Dự án <span class="caret-down">▾</span></a>
+        <ul class="sub-menu">
+          <li><a href="projects.html" class="sub-all">Tổng quan dự án</a></li>
+          {% for pp in projects %}<li><a href="project-{{ pp.id }}.html" class="{{ 'current' if project is defined and project.id == pp.id }}"><span class="sub-num">{{ pp.id }}</span>{{ pp.title }}</a></li>{% endfor %}
+        </ul>
+      </li>
       <li><a href="conclusion.html" class="{{ 'active' if page == 'conclusion' }}">♬ Tổng kết</a></li>
     </ul>
   </div>
@@ -43,11 +49,13 @@
   <div class="container footer-inner">
     <div>
       <div class="footer-name">🎵 {{ name }}</div>
-      <div class="muted">{{ [student_id, class, major]|select|join(' · ') }}</div>
+      <div class="muted">Mã SV: {{ student_id or '…' }} · Lớp: {{ class or '…' }}</div>
+      <div class="muted">{{ major }}{% if school %} · {{ school }}{% endif %}</div>
     </div>
     <div class="footer-right">
-      <div class="muted">{{ school or subject }}</div>
-      {% if email %}<a href="mailto:{{ email }}">{{ email }}</a>{% else %}<div class="muted">{{ subject }}</div>{% endif %}
+      <div class="muted">Học phần</div>
+      <div class="footer-subject">{{ subject }}</div>
+      {% if email %}<a href="mailto:{{ email }}">{{ email }}</a>{% endif %}
     </div>
   </div>
   <div class="container footer-copy">© {{ name }} — Portfolio học phần CNS&amp;AI</div>

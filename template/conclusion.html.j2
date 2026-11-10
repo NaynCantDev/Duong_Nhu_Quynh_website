@@ -42,9 +42,22 @@
       </article>
     </div>
 
-    <div class="cta-box glass reveal">
+    <div class="section-head reveal" style="margin-top:56px">
+      <span class="section-label">♫ Các bài tập đã hoàn thành</span>
+    </div>
+    <div class="done-list">
+      {% for p in projects %}
+      <a href="project-{{ p.id }}.html" class="done-item glass reveal" data-delay="{{ loop.index0 % 3 }}">
+        <span class="done-num">{{ '%02d' % p.id }}</span>
+        <span class="done-text"><small>{{ p.chapter }}</small>{{ p.title }}</span>
+        <span class="arrow">→</span>
+      </a>
+      {% endfor %}
+    </div>
+
+    <div class="cta-box glass reveal" style="margin-top:40px">
       <h2>Cảm ơn bạn đã ghé thăm!</h2>
-      <p class="muted">Liên hệ: <a href="mailto:{{ email }}">{{ email }}</a></p>
+      {% if email %}<p class="muted">Liên hệ: <a href="mailto:{{ email }}">{{ email }}</a></p>{% endif %}
       <div class="hero-actions center">
         <a href="projects.html" class="btn btn-ghost magnetic">← Xem lại dự án</a>
         <a href="index.html" class="btn btn-primary magnetic">Về trang chủ</a>

@@ -18,117 +18,261 @@ about:
 
 projects:
   - id: 1
+    section: "1.4"
     title: "Thao tác cơ bản với tệp tin và thư mục"
     chapter: "Chương 1 – Máy tính và các thiết bị ngoại vi"
-    objective: "Xây dựng cấu trúc thư mục tối ưu cho việc học tập, áp dụng quy tắc đặt tên tệp nhất quán để dễ tìm kiếm và quản lý."
-    process: |
-      Bước 1: Phân tích nhu cầu lưu trữ tài liệu học tập theo môn học và học kỳ.
-      Bước 2: Thiết kế sơ đồ cấu trúc thư mục dạng cây (tree structure).
-      Bước 3: Tạo thực tế trên máy tính và đặt tên theo quy tắc: [MônHọc]_[ChủĐề]_[Ngày].ext.
-      Bước 4: Chụp ảnh màn hình minh họa cấu trúc đã xây dựng.
-      Khó khăn: Quyết định mức độ phân cấp thư mục phù hợp – giải quyết bằng nguyên tắc không quá 3 cấp.
-    tool: "Windows Explorer, Tree Command Prompt"
+    objective: "Thiết lập một cấu trúc thư mục khoa học cho toàn bộ tài liệu học tập ngành Sư phạm Âm nhạc (bài giảng, bản nhạc, file ghi âm luyện tập, giáo án) và một quy tắc đặt tên tệp thống nhất. Kỹ năng rèn luyện: tạo – đổi tên – di chuyển – sao lưu tệp tin, tổ chức dữ liệu để tìm kiếm nhanh."
+    process:
+      - "Bước 1: Thống kê các loại tài liệu đang có: slide bài giảng (PDF), bản nhạc (PDF/ảnh chụp), file ghi âm luyện thanh (M4A), giáo án (DOCX), video tiết dạy mẫu (MP4)."
+      - "Bước 2: Phác thảo sơ đồ cây thư mục theo nguyên tắc Học kỳ → Môn học → Loại tài liệu, tối đa 3 cấp."
+      - "Bước 3: Đặt quy tắc đặt tên tệp: Ngày_Môn_NộiDung_PhiênBản, viết không dấu, ngăn cách bằng dấu gạch dưới."
+      - "Bước 4: Tạo cấu trúc trên máy tính bằng File Explorer, đổi tên hàng loạt các tệp cũ theo quy tắc mới."
+      - "Bước 5: Đồng bộ thư mục gốc lên Google Drive để sao lưu và mở được trên điện thoại khi đi học."
+      - "Khó khăn: File ghi âm từ điện thoại có tên tự động khó phân biệt (VID_2026…, Recording 12…) – giải quyết bằng cách nghe lại, đổi tên ngay sau mỗi buổi luyện tập và thêm tiền tố ngày."
+    tool: "File Explorer (Windows), Google Drive"
     ai_use: "Không sử dụng AI"
-    result_desc: "Cấu trúc thư mục gồm 3 cấp: Học_Kỳ → Môn_Học → Loại_Tài_Liệu (Bài_Giảng, Bài_Tập, Dự_Án). Tệp đặt tên theo quy tắc YYYY-MM-DD_TenMon_ChuDe.ext."
-    result_img: "📁 HocKy2_2024/<br>&nbsp;&nbsp;📂 CNS_AI/<br>&nbsp;&nbsp;&nbsp;&nbsp;📄 2024-03-01_CNSAI_BaiGiang_Chuong1.pdf<br>&nbsp;&nbsp;&nbsp;&nbsp;📄 2024-03-08_CNSAI_BaiTap_Chuong1.docx<br>&nbsp;&nbsp;📂 LapTrinhWeb/<br>&nbsp;&nbsp;&nbsp;&nbsp;📄 2024-03-02_Web_HTML_CoBan.html"
+    product:
+      intro: "Cấu trúc thư mục đã thiết lập (thư mục gốc được đồng bộ lên Google Drive):"
+      blocks:
+        - type: tree
+          title: "QUYNH_SPAN_HK1_2026-2027"
+          items:
+            - name: "01_Thanh_nhac"
+              children: ["01_Bai_giang", "02_Ban_nhac", "03_Ghi_am_luyen_tap"]
+            - name: "02_Nhac_cu_Piano"
+              children: ["01_Bai_tap_ngon", "02_Tac_pham"]
+            - name: "03_Ly_thuyet_am_nhac"
+              children: ["01_Bai_giang", "02_Bai_tap"]
+            - name: "04_Phuong_phap_day_hoc_Am_nhac"
+              children: ["01_Giao_an", "02_Video_tiet_day_mau"]
+            - name: "05_CNS_AI"
+              children: ["Bai1_Thu_muc", "Bai2_Tim_kiem", "Bai3_Prompt", "Bai4_Hop_tac", "Bai5_AI_tao_sinh", "Bai6_AI_trach_nhiem"]
+            - name: "99_Luu_tru"
+              children: []
+        - type: table
+          title: "Quy tắc đặt tên tệp: YYYYMMDD_Mon_NoiDung_vX.ext"
+          headers: ["Thành phần", "Quy tắc", "Ví dụ"]
+          rows:
+            - ["Ngày", "Năm-tháng-ngày viết liền, giúp tệp tự sắp xếp theo thời gian", "20261015"]
+            - ["Môn", "Viết tắt, không dấu", "ThanhNhac, Piano, LyThuyet, PPDH"]
+            - ["Nội dung", "Ngắn gọn, các từ nối bằng dấu gạch ngang", "LuyenThanh-Ma-Me-Mi"]
+            - ["Phiên bản", "v1, v2… hoặc final cho bản nộp", "v2, final"]
+        - type: examples
+          title: "Một số tệp sau khi đổi tên"
+          items:
+            - "20261015_ThanhNhac_LuyenThanh-Ma-Me-Mi_v1.m4a"
+            - "20261020_LyThuyet_HopAm-Ba_v2.pdf"
+            - "20261102_PPDH_GiaoAn-DayHat-Lop3_final.docx"
+            - "20261105_Piano_Gam-Do-Truong_v1.mp4"
+        - type: note
+          text: "Nguyên tắc: không quá 3 cấp thư mục · đánh số đầu tên để cố định thứ tự · không dùng dấu tiếng Việt và khoảng trắng để tránh lỗi khi tải lên/chia sẻ · thư mục 99_Luu_tru chứa tài liệu học kỳ cũ."
+      gallery: []
+      # gallery:
+      #   - { file: "images/bai1_cay_thu_muc.png", caption: "Cấu trúc thư mục trên File Explorer" }
+      #   - { file: "images/bai1_google_drive.png", caption: "Thư mục gốc đã đồng bộ lên Google Drive" }
 
   - id: 2
+    section: "2.4"
     title: "Tìm kiếm và đánh giá thông tin học thuật"
     chapter: "Chương 2 – Khai thác dữ liệu và thông tin"
-    objective: "Thành thạo sử dụng toán tử tìm kiếm nâng cao (Boolean operators) trên Google Scholar và các cơ sở dữ liệu học thuật; đánh giá độ tin cậy của nguồn thông tin."
-    process: |
-      Bước 1: Học các toán tử Boolean (AND, OR, NOT) và ký tự đặc biệt ("", site:, filetype:).
-      Bước 2: Thực hành tìm kiếm chủ đề "Trí tuệ nhân tạo trong giáo dục" trên Google Scholar.
-      Bước 3: Lập bảng đánh giá 5 nguồn tin theo tiêu chí CRAAP (Currency, Relevance, Authority, Accuracy, Purpose).
-      Khó khăn: Phân biệt tạp chí peer-reviewed và tạp chí predatory – giải quyết bằng cách kiểm tra chỉ số IF và danh sách Beall.
-      AI: Dùng ChatGPT để giải thích tiêu chí CRAAP, không dùng để tìm kiếm thay thế.
-    tool: "Google Scholar, Semantic Scholar, ChatGPT"
-    ai_use: "ChatGPT – giải thích khái niệm CRAAP Test"
-    result_desc: "Tìm được 12 bài báo học thuật liên quan. Lập bảng đánh giá 5 nguồn tin với điểm CRAAP từ 70–90/100."
-    result_img: "table"
-    table_headers: ["Nguồn", "Năm", "Tác giả", "Điểm CRAAP", "Đánh giá"]
-    table_rows:
-      - ["AI in Education (Nature)", "2023", "Zhang et al.", "92/100", "✅ Tin cậy cao"]
-      - ["Medium Blog Post", "2022", "Anonymous", "41/100", "❌ Không tin cậy"]
-      - ["UNESCO Report 2023", "2023", "UNESCO", "95/100", "✅ Tin cậy cao"]
-      - ["Wikipedia AI Article", "2024", "Community", "58/100", "⚠️ Tham khảo"]
-      - ["ACM Digital Library", "2023", "Kim & Lee", "88/100", "✅ Tin cậy cao"]
+    objective: "Sử dụng các toán tử tìm kiếm nâng cao để tìm tài liệu học thuật về chủ đề “Ứng dụng công nghệ số trong dạy học Âm nhạc ở trường phổ thông”, sau đó đánh giá độ tin cậy của nguồn tin theo bộ tiêu chí CRAAP. Kỹ năng rèn luyện: xây dựng truy vấn, lọc kết quả, đánh giá nguồn."
+    process:
+      - "Bước 1: Xác định từ khóa tiếng Việt và tiếng Anh: dạy học âm nhạc / music education, công nghệ / technology, trí tuệ nhân tạo / artificial intelligence."
+      - "Bước 2: Kết hợp từ khóa với các toán tử AND, OR, dấu “ ”, site:, filetype:, intitle: trên Google và Google Scholar."
+      - "Bước 3: Lọc kết quả theo năm xuất bản (ưu tiên từ 2018 trở lại đây) và loại tài liệu."
+      - "Bước 4: Chọn 5 nguồn tiêu biểu, chấm điểm theo 5 tiêu chí CRAAP (Currency – Relevance – Authority – Accuracy – Purpose), mỗi tiêu chí 10 điểm."
+      - "Khó khăn: Nhiều kết quả tiếng Việt là bài blog, không rõ tác giả – giải quyết bằng cách thêm site:.edu.vn, site:gov.vn và ưu tiên tìm bằng tiếng Anh trên Google Scholar."
+      - "AI: Dùng ChatGPT để giải thích ý nghĩa từng tiêu chí CRAAP; việc tìm kiếm và chấm điểm do tự thực hiện."
+    tool: "Google Search, Google Scholar, ChatGPT"
+    ai_use: "ChatGPT – giải thích tiêu chí CRAAP"
+    product:
+      intro: "Các truy vấn nâng cao đã sử dụng và mục đích của từng truy vấn:"
+      blocks:
+        - type: queries
+          items:
+            - { q: '"music education" AND technology', op: 'AND, " "', why: "Tìm bài viết có đúng cụm music education và có nhắc tới technology" }
+            - { q: '"music education" AND ("artificial intelligence" OR AI)', op: "AND, OR, ( )", why: "Mở rộng sang các nghiên cứu về AI trong giáo dục âm nhạc" }
+            - { q: 'chương trình môn Âm nhạc site:moet.gov.vn', op: "site:", why: "Chỉ lấy văn bản chính thức từ trang Bộ Giáo dục và Đào tạo" }
+            - { q: '"phương pháp dạy hát" filetype:pdf', op: 'filetype:, " "', why: "Tìm giáo trình, bài báo dạng PDF" }
+            - { q: 'intitle:"music teacher" technology', op: "intitle:", why: "Chỉ lấy tài liệu có music teacher ngay trong tiêu đề" }
+            - { q: '"dạy học âm nhạc" công nghệ -quảng cáo', op: '" ", -', why: "Loại bỏ các trang quảng cáo khóa học" }
+        - type: table
+          title: "Bảng đánh giá nguồn tin theo CRAAP (tự chấm, thang 50)"
+          headers: ["Nguồn", "Loại", "C", "R", "A", "A", "P", "Tổng", "Kết luận"]
+          rows:
+            - ["Chương trình GDPT môn Âm nhạc (Bộ GD&ĐT, 2018)", "Văn bản chính thức", "8", "10", "10", "10", "10", "48", "✅ Tin cậy cao"]
+            - ["Guidance for generative AI in education and research (UNESCO, 2023)", "Báo cáo tổ chức quốc tế", "10", "8", "10", "9", "9", "46", "✅ Tin cậy cao"]
+            - ["Bài báo trên International Journal of Music Education (SAGE)", "Tạp chí bình duyệt", "8", "9", "9", "9", "9", "44", "✅ Tin cậy cao"]
+            - ["Wikipedia – mục “Music education”", "Bách khoa mở", "9", "7", "5", "6", "8", "35", "⚠️ Chỉ để tham khảo"]
+            - ["Bài blog “Mẹo dạy nhạc bằng app” (không rõ tác giả)", "Blog cá nhân", "7", "6", "2", "3", "3", "21", "❌ Không dùng"]
+        - type: note
+          text: "Kết luận: ưu tiên văn bản chính thức và tạp chí có bình duyệt; Wikipedia chỉ dùng để nắm khái niệm ban đầu rồi lần theo tài liệu gốc ở mục tham khảo."
+      gallery: []
 
   - id: 3
+    section: "3.4"
     title: "Viết Prompt hiệu quả cho các tác vụ học tập"
     chapter: "Chương 3 – Tổng quan về trí tuệ nhân tạo"
-    objective: "Hiểu cơ chế hoạt động cơ bản của LLM và kỹ thuật prompt engineering; so sánh chất lượng đầu ra giữa prompt đơn giản và prompt được thiết kế tốt."
-    process: |
-      Bước 1: Nghiên cứu khung RASCEF (Role, Action, Steps, Context, Example, Format).
-      Bước 2: Viết 3 cặp prompt (đơn giản vs. cải tiến) cho các tác vụ: giải thích khái niệm, tóm tắt văn bản, lên kế hoạch học tập.
-      Bước 3: Chạy cả hai phiên bản trên ChatGPT-4o, chụp màn hình kết quả.
-      Bước 4: Phân tích và so sánh chất lượng đầu ra theo 4 tiêu chí: độ chính xác, độ chi tiết, định dạng, tính ứng dụng.
-      AI: ChatGPT-4o – đối tượng thực nghiệm (không dùng để viết báo cáo).
-    tool: "ChatGPT-4o, Notion (ghi chép)"
-    ai_use: "ChatGPT-4o – đối tượng thực nghiệm"
-    result_desc: "Prompt cải tiến cho kết quả chi tiết hơn 340%, có cấu trúc rõ ràng và sát yêu cầu hơn so với prompt gốc."
-    prompt_comparison:
-      before:
-        label: "Prompt ban đầu"
-        content: "Giải thích machine learning cho tôi"
-        output: "Machine learning là một nhánh của AI cho phép máy tính học từ dữ liệu..."
-      after:
-        label: "Prompt cải tiến"
-        content: "Bạn là giáo viên CNTT dạy sinh viên năm 2. Hãy giải thích khái niệm 'machine learning' theo cấu trúc: (1) định nghĩa đơn giản bằng ví dụ thực tế, (2) 3 loại học máy chính với ví dụ, (3) 2 ứng dụng trong đời sống sinh viên. Viết bằng tiếng Việt, dài khoảng 300 từ."
-        output: "**Machine Learning là gì?** Hãy tưởng tượng bạn dạy một đứa trẻ nhận biết con mèo bằng cách cho xem 1000 ảnh... [chi tiết 300 từ, có heading, ví dụ cụ thể]"
+    objective: "Hiểu cách mô hình ngôn ngữ lớn (LLM) phản hồi theo yêu cầu, áp dụng cấu trúc prompt gồm Vai trò – Nhiệm vụ – Bối cảnh – Định dạng – Giới hạn để cải thiện kết quả cho 3 tác vụ học tập của ngành Sư phạm Âm nhạc; so sánh đầu ra giữa prompt ban đầu và prompt cải tiến."
+    process:
+      - "Bước 1: Chọn 3 tác vụ thực tế: soạn khung giáo án dạy hát, giải thích một khái niệm nhạc lý, lập kế hoạch luyện thanh cá nhân."
+      - "Bước 2: Viết prompt ban đầu (ngắn, chung chung) và chạy thử trên ChatGPT."
+      - "Bước 3: Viết lại prompt theo cấu trúc Vai trò – Nhiệm vụ – Bối cảnh – Định dạng – Giới hạn, chạy lại trong cuộc trò chuyện mới."
+      - "Bước 4: So sánh hai kết quả theo 4 tiêu chí: độ chính xác, độ chi tiết, định dạng, tính ứng dụng (thang 5)."
+      - "Khó khăn: Ở lần đầu, AI ghi sai số phách của nhịp 3/4 trong ví dụ – giải quyết bằng cách đối chiếu với giáo trình Lý thuyết âm nhạc và yêu cầu AI sửa lại."
+      - "AI: ChatGPT là đối tượng thực nghiệm; phần phân tích, so sánh do tự viết."
+    tool: "ChatGPT, Google Docs (ghi chép)"
+    ai_use: "ChatGPT – đối tượng thực nghiệm"
+    product:
+      intro: "So sánh 3 cặp prompt và kết quả đầu ra (trích đoạn):"
+      blocks:
+        - type: prompts
+          items:
+            - task: "Soạn khung giáo án dạy hát"
+              before: { prompt: "Soạn giáo án dạy hát lớp 3.", output: "Giáo án gồm: Mục tiêu, Chuẩn bị, Tiến trình dạy học, Củng cố… (nội dung chung chung, không nêu bài hát, không chia thời gian)." }
+              after: { prompt: "Bạn là giáo viên Âm nhạc tiểu học. Hãy soạn khung giáo án 35 phút dạy hát một bài hát thiếu nhi nhịp 2/4 cho học sinh lớp 3 theo Chương trình GDPT 2018. Trình bày dạng bảng gồm: Hoạt động – Thời gian – Hoạt động của GV – Hoạt động của HS. Có 1 trò chơi âm nhạc khởi động và 1 hoạt động gõ đệm theo phách.", output: "Bảng 5 hoạt động: Khởi động – trò chơi “Nghe tiết tấu đoán con vật” (5′); Nghe hát mẫu (5′); Đọc lời, tập hát từng câu (12′); Hát kết hợp gõ đệm theo phách (8′); Củng cố – biểu diễn theo nhóm (5′)…" }
+            - task: "Giải thích khái niệm nhạc lý"
+              before: { prompt: "Hợp âm là gì?", output: "Hợp âm là sự kết hợp của ba hay nhiều âm thanh vang lên cùng lúc… (định nghĩa đúng nhưng khô, dùng thuật ngữ khó)." }
+              after: { prompt: "Giải thích “hợp âm ba” cho học sinh lớp 6 mới học nhạc lý, dài khoảng 150 từ. Dùng một hình ảnh so sánh gần gũi, lấy ví dụ hợp âm Đô trưởng trên đàn phím, cuối bài có 1 câu hỏi kiểm tra nhanh.", output: "Hãy tưởng tượng hợp âm như một “món sinh tố” trộn từ 3 loại quả: mỗi nốt là một vị, khi vang cùng lúc tạo ra một màu sắc mới. Hợp âm Đô trưởng gồm Đô – Mi – Son… Câu hỏi: Hợp âm Son trưởng gồm những nốt nào?" }
+            - task: "Lập kế hoạch luyện thanh"
+              before: { prompt: "Lập kế hoạch luyện thanh cho tôi.", output: "Danh sách bài tập chung: hít thở, rung môi, luyện gam… (không có lịch, không theo giọng)." }
+              after: { prompt: "Tôi là sinh viên năm 1 ngành Sư phạm Âm nhạc, giọng nữ cao, mỗi ngày có 30 phút luyện tập. Lập kế hoạch luyện thanh 4 tuần dạng bảng (Tuần – Mục tiêu – Bài tập – Thời lượng), tăng độ khó dần, có lưu ý bảo vệ giọng.", output: "Tuần 1: Hơi thở & tư thế (thở bụng 5′, rung môi 5′, gam 5 nốt “ma” 10′…). Tuần 2: Mở rộng âm vực… Tuần 4: Ghép bài hát. Lưu ý: không luyện quá 45′ liên tục, uống nước ấm, nghỉ khi đau họng." }
+        - type: scores
+          title: "Đánh giá kết quả (thang 5)"
+          criteria: ["Độ chính xác", "Độ chi tiết", "Định dạng", "Tính ứng dụng"]
+          before: [3, 2, 2, 2]
+          after: [4, 5, 5, 5]
+        - type: note
+          text: "Bài học rút ra: prompt càng nêu rõ vai trò, đối tượng, bối cảnh và định dạng thì kết quả càng sát nhu cầu. Tuy vậy, kiến thức chuyên môn trong câu trả lời của AI vẫn phải được kiểm tra lại với giáo trình."
+      gallery: []
 
   - id: 4
+    section: "4.4"
     title: "Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm"
     chapter: "Chương 4 – Giao tiếp và hợp tác trong môi trường số"
-    objective: "Thành thạo sử dụng ít nhất 2 công cụ hợp tác trực tuyến để quản lý dự án nhóm; xây dựng quy trình làm việc số hiệu quả."
-    process: |
-      Bước 1: Nhóm 4 người thống nhất dùng Trello (quản lý task) và Google Docs (soạn thảo chung).
-      Bước 2: Tạo board Trello với 4 cột: To Do, In Progress, Review, Done.
-      Bước 3: Phân công công việc, đặt deadline cho từng thành viên.
-      Bước 4: Họp trực tuyến qua Google Meet 2 lần/tuần, ghi chú bằng Google Docs.
-      Khó khăn: Thành viên khác múi giờ khi đi thực tập – giải quyết bằng async communication qua Trello comments.
-      AI: Dùng Gemini để gợi ý quy tắc làm việc nhóm (team charter).
-    tool: "Trello, Google Docs, Google Meet, Gemini"
-    ai_use: "Gemini – gợi ý nội dung team charter"
-    result_desc: "Nhóm hoàn thành dự án đúng deadline với 15 task được phân công rõ ràng. Board Trello ghi nhận 100% task hoàn thành."
+    objective: "Sử dụng công cụ quản lý dự án và các công cụ cộng tác trực tuyến để tổ chức một dự án nhóm 4 người: dàn dựng tiết mục hợp ca chào mừng Ngày Nhà giáo Việt Nam 20/11. Kỹ năng rèn luyện: phân công công việc, theo dõi tiến độ, giao tiếp đồng bộ và không đồng bộ."
+    process:
+      - "Bước 1: Cả nhóm thống nhất bộ công cụ: Trello (quản lý công việc), Google Drive (lưu bản phối, file ghi âm), Google Docs (biên bản họp), nhóm Zalo (trao đổi nhanh), Google Meet (họp trực tuyến)."
+      - "Bước 2: Tạo bảng Trello 4 cột: Cần làm – Đang làm – Chờ duyệt – Hoàn thành; mỗi thẻ có người phụ trách và hạn chót."
+      - "Bước 3: Chia bè và gửi file ghi âm hát mẫu từng bè lên thư mục chung để các bạn tự luyện ở nhà."
+      - "Bước 4: Họp Google Meet 2 buổi/tuần để duyệt tiến độ; biên bản ghi trực tiếp vào Google Docs dùng chung."
+      - "Khó khăn: Lịch học các thành viên khác nhau nên khó tập chung – giải quyết bằng cách mỗi người tự ghi âm phần bè của mình, nhóm trưởng ghép thử và góp ý qua bình luận trên Trello."
+      - "AI: Dùng Gemini gợi ý mẫu “quy ước làm việc nhóm”; nhóm chỉnh sửa lại cho phù hợp."
+    tool: "Trello, Google Drive, Google Docs, Google Meet, Zalo"
+    ai_use: "Gemini – gợi ý mẫu quy ước làm việc nhóm"
+    product:
+      intro: "Bảng quản lý công việc của nhóm trên Trello (mô phỏng lại các thẻ chính):"
+      blocks:
+        - type: kanban
+          columns:
+            - name: "Cần làm"
+              cards: [{ t: "Tổng duyệt trên sân khấu", who: "Cả nhóm", due: "19/11" }]
+            - name: "Đang làm"
+              cards: [{ t: "Thiết kế đội hình đứng", who: "Thành viên 3", due: "15/11" }, { t: "Chuẩn bị trang phục", who: "Thành viên 4", due: "16/11" }]
+            - name: "Chờ duyệt"
+              cards: [{ t: "Ghép thử 3 bè từ file ghi âm", who: "Quỳnh", due: "12/11" }]
+            - name: "Hoàn thành"
+              cards: [{ t: "Chọn bài hát & xin bản phối", who: "Thành viên 2", due: "05/11" }, { t: "Ghi âm hát mẫu bè 1", who: "Quỳnh", due: "08/11" }, { t: "Quy ước làm việc nhóm", who: "Cả nhóm", due: "04/11" }]
+        - type: roles
+          title: "Phân công & cách phối hợp"
+          items:
+            - { icon: "🎤", who: "Quỳnh (nhóm trưởng)", task: "Phụ trách bè 1, ghép file ghi âm, quản lý bảng Trello" }
+            - { icon: "🎼", who: "Thành viên 2", task: "Tìm bản phối, chia bè, phụ trách bè 2" }
+            - { icon: "🕺", who: "Thành viên 3", task: "Đội hình, động tác minh họa, bè 3" }
+            - { icon: "👗", who: "Thành viên 4", task: "Trang phục, đạo cụ, ghi biên bản họp" }
+        - type: flow
+          title: "Quy trình phối hợp trực tuyến"
+          items: ["Giao việc trên Trello", "Tự luyện + ghi âm", "Nộp file lên Google Drive", "Góp ý bằng bình luận", "Họp Meet duyệt tiến độ", "Chuyển thẻ sang Hoàn thành"]
+      gallery: []
 
   - id: 5
+    section: "5.4"
     title: "Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung"
     chapter: "Chương 5 – Sáng tạo nội dung số"
-    objective: "Thực hành sử dụng công cụ AI tạo sinh (Generative AI) để sáng tạo và chỉnh sửa nội dung số; đánh giá vai trò và giới hạn của AI trong sáng tạo."
-    process: |
-      Bước 1: Lên ý tưởng infographic về "5 kỹ năng số sinh viên cần trong thế kỷ 21".
-      Bước 2: Dùng Canva AI để tạo bố cục và gợi ý màu sắc.
-      Bước 3: Dùng Midjourney để tạo hình minh họa background.
-      Bước 4: Kết hợp thủ công trong Canva, chỉnh sửa typography và layout.
-      Bước 5: Xuất bản lên Behance và LinkedIn.
-      Khó khăn: Hình AI tạo ra đôi khi không phù hợp văn hóa Việt – giải quyết bằng cách viết prompt chi tiết thêm "Vietnamese context, university student".
-      AI: Canva AI (layout), Midjourney (hình ảnh), ChatGPT (nội dung text).
-    tool: "Canva AI, Midjourney, ChatGPT, Behance"
-    ai_use: "Canva AI – gợi ý layout; Midjourney – tạo background; ChatGPT – viết caption"
-    result_desc: "Infographic 'Top 5 Digital Skills' định dạng A4 đứng, phong cách tối giản hiện đại. Đăng lên Behance nhận 47 lượt xem trong tuần đầu."
+    objective: "Sử dụng công cụ AI tạo sinh để hỗ trợ thiết kế một sản phẩm nội dung số hoàn chỉnh: infographic “5 bước khởi động giọng trước giờ học hát” dành cho học sinh THCS; đồng thời đánh giá vai trò và giới hạn của AI trong quá trình sáng tạo."
+    process:
+      - "Bước 1: Lên ý tưởng và tự viết nội dung 5 bước khởi động giọng dựa trên kiến thức môn Thanh nhạc."
+      - "Bước 2: Nhờ ChatGPT rút gọn câu chữ cho phù hợp lứa tuổi THCS, sau đó tự kiểm tra lại tính chính xác chuyên môn."
+      - "Bước 3: Dùng Canva (Magic Design) gợi ý bố cục; dùng tính năng tạo ảnh bằng AI của Canva để tạo hình minh họa nốt nhạc, micro."
+      - "Bước 4: Chỉnh sửa thủ công: đổi bảng màu, căn chỉnh chữ, thay hình AI bị lỗi, thêm nguồn tham khảo."
+      - "Khó khăn: Hình AI tạo ra vẽ sai khuông nhạc (6 dòng kẻ) – giải quyết bằng cách thay bằng biểu tượng khuông nhạc có sẵn trong thư viện Canva."
+      - "AI: ChatGPT – rút gọn câu chữ; Canva AI – gợi ý bố cục và tạo hình minh họa."
+    tool: "Canva (Magic Design, tạo ảnh AI), ChatGPT"
+    ai_use: "ChatGPT – rút gọn câu chữ; Canva AI – bố cục & hình minh họa"
+    product:
+      intro: "Nội dung infographic hoàn thiện (khổ A4 dọc, đã xuất bản dạng PNG và PDF):"
+      blocks:
+        - type: showcase
+          title: "5 bước khởi động giọng trước giờ học hát"
+          subtitle: "Dành cho học sinh THCS · 5 phút mỗi ngày"
+          steps:
+            - { icon: "🧍", t: "Tư thế đúng", d: "Đứng thẳng, hai chân rộng bằng vai, vai thả lỏng, mắt nhìn thẳng." }
+            - { icon: "🌬️", t: "Hít thở bằng bụng", d: "Hít sâu bằng mũi 4 nhịp, giữ 2 nhịp, thở ra chậm bằng miệng 6 nhịp. Lặp lại 5 lần." }
+            - { icon: "👄", t: "Rung môi", d: "Thả lỏng môi, thổi hơi cho môi rung “brrr” theo các nốt lên xuống." }
+            - { icon: "🎵", t: "Luyện âm “ma – me – mi – mo – mu”", d: "Hát theo gam 5 nốt đi lên rồi đi xuống, mở khẩu hình tròn, không gào." }
+            - { icon: "💧", t: "Nghỉ & uống nước ấm", d: "Uống vài ngụm nước ấm; dừng ngay nếu thấy đau rát cổ họng." }
+        - type: split
+          title: "Tỷ lệ đóng góp trong sản phẩm"
+          items:
+            - { label: "Tự thực hiện: ý tưởng, nội dung chuyên môn, chỉnh sửa, kiểm tra", pct: 70 }
+            - { label: "AI hỗ trợ: rút gọn câu chữ, gợi ý bố cục, hình minh họa", pct: 30 }
+        - type: note
+          text: "Nhận xét: AI giúp tiết kiệm thời gian thiết kế, nhưng không thay được kiến thức chuyên môn – mọi nội dung về kỹ thuật thanh nhạc đều phải tự kiểm chứng trước khi đưa cho học sinh."
+      gallery: []
+      # gallery:
+      #   - { file: "images/bai5_infographic.png", caption: "Infographic hoàn thiện" }
+      # links:
+      #   - { label: "Xem bản PDF", url: "https://drive.google.com/...", icon: "📄" }
 
   - id: 6
+    section: "6.4"
     title: "Sử dụng AI có trách nhiệm trong học tập và nghiên cứu"
     chapter: "Chương 6 – An toàn và liêm chính học thuật trong môi trường số"
-    objective: "Xây dựng bộ nguyên tắc cá nhân về sử dụng AI có trách nhiệm; nhận biết ranh giới giữa hỗ trợ AI hợp lệ và vi phạm liêm chính học thuật."
-    process: |
-      Bước 1: Nghiên cứu chính sách AI của 3 trường đại học uy tín (MIT, NUS, ĐHQG Hà Nội).
-      Bước 2: Tổng hợp các tình huống "gray area" (vùng xám) trong sử dụng AI.
-      Bước 3: Xây dựng bộ 5 nguyên tắc cá nhân dựa trên nghiên cứu.
-      Bước 4: Trình bày dưới dạng "AI Ethics Personal Card" bằng Canva.
-      AI: Claude AI – hỗ trợ tra cứu và tóm tắt chính sách AI của các trường.
-    tool: "Claude AI, Canva, Google Scholar"
-    ai_use: "Claude AI – tra cứu chính sách AI đại học, tóm tắt văn bản dài"
-    result_desc: "Bộ 5 nguyên tắc: (1) Luôn ghi rõ AI đã hỗ trợ phần nào, (2) Tư duy phản biện kết quả AI, (3) Không dùng AI thay thế hiểu biết thực sự, (4) Bảo vệ dữ liệu cá nhân khi dùng AI, (5) Dùng AI để học, không phải để gian lận."
+    objective: "Tìm hiểu các hướng dẫn về sử dụng AI trong giáo dục, phân tích những tình huống “vùng xám” thường gặp với sinh viên Sư phạm Âm nhạc và xây dựng bộ nguyên tắc cá nhân về sử dụng AI có trách nhiệm."
+    process:
+      - "Bước 1: Đọc tài liệu Guidance for generative AI in education and research (UNESCO, 2023), bài giảng Chương 6 và quy định về sử dụng AI trong đề thi học phần."
+      - "Bước 2: Liệt kê các tình huống sử dụng AI trong học tập ngành Âm nhạc và phân loại: hợp lệ – vùng xám – vi phạm."
+      - "Bước 3: Rút ra 5 nguyên tắc cá nhân, viết ngắn gọn để dễ ghi nhớ và áp dụng."
+      - "Bước 4: Trình bày bộ nguyên tắc dưới dạng thẻ “AI có trách nhiệm” để dán vào góc học tập."
+      - "Khó khăn: Ranh giới giữa “nhờ AI sửa lời” và “nhờ AI viết hộ” chưa rõ – giải quyết bằng câu hỏi tự kiểm tra: nếu bỏ AI đi, mình có tự giải thích và làm lại được phần đó không?"
+      - "AI: Dùng ChatGPT tóm tắt các ý chính của tài liệu UNESCO; nội dung nguyên tắc do tự xây dựng."
+    tool: "ChatGPT, Canva, tài liệu UNESCO (2023)"
+    ai_use: "ChatGPT – tóm tắt tài liệu tham khảo"
+    product:
+      intro: "Bộ 5 nguyên tắc cá nhân về sử dụng AI có trách nhiệm:"
+      blocks:
+        - type: principles
+          items:
+            - { t: "Minh bạch", d: "Luôn ghi rõ công cụ AI đã dùng và dùng vào phần nào của bài." }
+            - { t: "Kiểm chứng", d: "Đối chiếu kiến thức nhạc lý, tên tác giả, xuất xứ bài hát với giáo trình và nguồn chính thống." }
+            - { t: "Tôn trọng bản quyền", d: "Không dùng AI sao chép lời ca, bản nhạc của người khác rồi nộp như sản phẩm của mình; luôn ghi nguồn." }
+            - { t: "AI hỗ trợ, không thay thế", d: "Kỹ năng hát, đàn, đứng lớp phải tự rèn luyện; AI chỉ là công cụ gợi ý." }
+            - { t: "Bảo vệ dữ liệu", d: "Không đưa giọng hát, hình ảnh, thông tin của học sinh hay bạn bè lên công cụ AI khi chưa được cho phép." }
+        - type: scenarios
+          title: "Phân tích các tình huống"
+          items:
+            - { s: "Nhờ AI giải thích lại khái niệm nhạc lý chưa hiểu", v: "ok", r: "Hỗ trợ học tập, tự kiểm chứng lại với giáo trình" }
+            - { s: "Nhờ AI gợi ý trò chơi âm nhạc cho giáo án, sau đó tự chỉnh sửa", v: "ok", r: "Có ghi rõ AI hỗ trợ và có đóng góp của bản thân" }
+            - { s: "Nhờ AI viết lại toàn bộ bài cảm nhận rồi chỉ sửa vài từ", v: "gray", r: "Nội dung cảm nhận phải do sinh viên tự viết" }
+            - { s: "Dùng AI tạo giai điệu rồi nộp như sáng tác của mình", v: "bad", r: "Không trung thực về tác giả sản phẩm" }
+            - { s: "Tải file ghi âm giọng hát học sinh lên app AI để chấm", v: "bad", r: "Chưa có sự đồng ý, vi phạm quyền riêng tư" }
+        - type: refs
+          title: "Tài liệu tham khảo"
+          items:
+            - "UNESCO (2023). Guidance for generative AI in education and research. Paris: UNESCO."
+            - "Bài giảng Chương 6 – An toàn và liêm chính học thuật trong môi trường số, học phần Nhập môn Công nghệ số và ứng dụng trí tuệ nhân tạo."
+            - "Quy định về sử dụng AI và liêm chính học thuật trong đề thi kết thúc học phần INF2501."
+      gallery: []
 
 conclusion:
-  experience: "Hành trình xây dựng portfolio này là một trong những trải nghiệm học tập có giá trị nhất trong học kỳ. Từ chỗ chưa biết gì về quản lý tệp tin đúng cách đến việc sử dụng AI một cách có trách nhiệm – mỗi chương mở ra một góc nhìn mới về thế giới số."
+  # ⚠ Theo quy định đề thi: nội dung cảm nhận, tự đánh giá phải do sinh viên TỰ VIẾT.
+  #   Đoạn dưới đây chỉ là bản nháp để Quỳnh viết lại bằng lời của mình.
+  experience: "Xây dựng Portfolio giúp mình nhìn lại cả hành trình học phần: từ việc sắp xếp lại kho tài liệu, bản nhạc, file ghi âm cho gọn gàng đến việc biết dùng AI như một trợ lý học tập. Mình nhận ra kỹ năng số không tách rời chuyên ngành Âm nhạc mà giúp việc học hát, soạn giáo án và làm việc nhóm hiệu quả hơn."
   key_skills:
-    - "Prompt Engineering – kỹ năng quan trọng nhất trong kỷ nguyên AI"
-    - "Đánh giá nguồn tin học thuật với tiêu chí CRAAP"
-    - "Hợp tác trực tuyến bất đồng bộ (async collaboration)"
-    - "Sử dụng AI tạo sinh có kiểm soát và trách nhiệm"
-  highlight: "Bài tập ấn tượng nhất là Bài 3 – Prompt Engineering. Việc so sánh đầu ra giữa prompt đơn giản và prompt được thiết kế kỹ cho thấy rõ ràng: AI không phải công cụ thần kỳ, mà là công cụ cần kỹ năng để dùng hiệu quả."
-  challenge: "Thách thức lớn nhất là quản lý thời gian khi làm song song 6 bài tập với lịch học dày. Giải pháp là lên kế hoạch rõ ràng trên Trello và đặt deadline sớm hơn 2 ngày so với deadline thực tế."
-  future: "Tiếp tục phát triển kỹ năng AI, học thêm về data literacy và hướng tới chứng chỉ Google Digital Skills for Africa / Microsoft AI Skills."
+    - "Tổ chức và sao lưu tài liệu học tập khoa học"
+    - "Tìm kiếm và đánh giá nguồn tin học thuật bằng tiêu chí CRAAP"
+    - "Viết prompt rõ ràng cho các tác vụ học tập và giảng dạy"
+    - "Phối hợp nhóm trực tuyến và sử dụng AI có trách nhiệm"
+  highlight: "Điểm tâm đắc nhất là Bài 5 – infographic khởi động giọng: mình được kết hợp kiến thức thanh nhạc với công cụ thiết kế có hỗ trợ AI để tạo ra một sản phẩm có thể dùng ngay khi đi thực tập dạy học."
+  challenge: "Thách thức lớn nhất là kiểm tra lại độ chính xác của nội dung do AI gợi ý và sắp xếp thời gian giữa giờ luyện tập chuyên ngành với các bài tập của học phần. Mình giải quyết bằng cách luôn đối chiếu với giáo trình và lên lịch cụ thể cho từng bài."
+  future: "Tiếp tục ứng dụng công nghệ số và AI vào việc soạn bài giảng Âm nhạc, xây dựng kho học liệu số cho học sinh và cập nhật Portfolio này trong suốt quá trình học tập."

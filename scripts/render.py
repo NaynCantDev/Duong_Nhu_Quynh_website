@@ -84,6 +84,23 @@ def render_student(env, student_id):
         else:
             print(f"  [WARN] không thấy ảnh {src} → dùng emoji")
 
+    # Ảnh minh họa cho từng bài: product.gallery[].file (đường dẫn tương đối trong students/<id>/)
+    img_dir = DIST_DIR / "assets" / "img"
+    for p in data["projects"]:
+        prod = p.get("product") or {}
+        kept = []
+        for g in prod.get("gallery") or []:
+            src = STUDENTS_DIR / student_id / g["file"]
+            if src.exists():
+                img_dir.mkdir(parents=True, exist_ok=True)
+                shutil.copy(src, img_dir / src.name)
+                kept.append({**g, "src": f"assets/img/{src.name}"})
+                print(f"  [OK] ảnh bài {p['id']}: {src.name}")
+            else:
+                print(f"  [WARN] bài {p['id']}: không thấy {src} → bỏ qua")
+        if prod:
+            prod["gallery"] = kept
+
     write(DIST_DIR, "index.html", env.get_template("index.html.j2").render(**data, page="home"))
     write(DIST_DIR, "projects.html", env.get_template("projects.html.j2").render(**data, page="projects"))
 
