@@ -1,0 +1,100 @@
+{% extends "_base.html.j2" %}
+{% block title %}Bài {{ project.id }} – {{ project.title }}{% endblock %}
+{% block content %}
+{% set p = project %}
+<section class="page-hero project-hero">
+  <div class="watermark" aria-hidden="true">{{ '%02d' % p.id }}</div>
+  <div class="container">
+    <nav class="breadcrumb reveal"><a href="index.html">Trang chủ</a><span>/</span><a href="projects.html">Dự án</a><span>/</span>Bài {{ p.id }}</nav>
+    <span class="section-label reveal">Bài {{ p.id }} · {{ p.chapter }}</span>
+    <h1 class="page-title reveal" data-delay="1">{{ p.title }}</h1>
+    <div class="meta-row reveal" data-delay="2">
+      <span class="chip">⭐ {{ p.score }} điểm</span>
+      <span class="chip">🛠 {{ p.tool }}</span>
+      <span class="chip ai">🤖 {{ p.ai_use }}</span>
+    </div>
+  </div>
+</section>
+
+<section class="section pt-0">
+  <div class="container detail">
+    <article class="block glass reveal">
+      <div class="block-head"><span class="block-icon">🎯</span><h2>Mục tiêu</h2></div>
+      <p class="lead">{{ p.objective }}</p>
+    </article>
+
+    <article class="block glass reveal">
+      <div class="block-head"><span class="block-icon">⚙️</span><h2>Quá trình thực hiện</h2></div>
+      <ol class="timeline">
+        {% for line in p.process.strip().split('\n') if line.strip() %}
+        {% set kind = line.strip()|step_kind %}
+        <li class="tl-item {{ kind }} reveal" data-delay="{{ loop.index0 % 4 }}">
+          <span class="tl-dot">{{ '⚠' if kind == 'challenge' else ('🤖' if kind == 'ai' else loop.index) }}</span>
+          <div class="tl-body">{{ line.strip() }}</div>
+        </li>
+        {% endfor %}
+      </ol>
+    </article>
+
+    <article class="block glass reveal">
+      <div class="block-head"><span class="block-icon">📦</span><h2>Sản phẩm</h2></div>
+      {% set pr = p.result_desc|principles %}
+      {% if pr %}
+        <p class="lead">{{ pr.head }}</p>
+        <div class="principles">
+          {% for it in pr['items'] %}
+          <div class="principle reveal" data-delay="{{ loop.index0 % 3 }}">
+            <span class="principle-num">{{ loop.index }}</span><span>{{ it }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="lead">{{ p.result_desc }}</p>
+      {% endif %}
+
+      {% if p.table_rows %}
+      <div class="table-wrap">
+        <table>
+          <thead><tr>{% for h in p.table_headers %}<th>{{ h }}</th>{% endfor %}</tr></thead>
+          <tbody>{% for r in p.table_rows %}<tr>{% for c in r %}<td>{{ c }}</td>{% endfor %}</tr>{% endfor %}</tbody>
+        </table>
+      </div>
+      {% elif p.result_img %}
+      <div class="terminal">
+        <div class="term-bar"><i></i><i></i><i></i><span>tree</span></div>
+        <div class="term-body">{{ p.result_img }}</div>
+      </div>
+      {% endif %}
+
+      {% if p.prompt_comparison %}
+      {% set pc = p.prompt_comparison %}
+      <div class="compare">
+        <div class="cbox before">
+          <div class="clabel">❌ {{ pc.before.label }}</div>
+          <div class="cprompt">{{ pc.before.content }}</div>
+          <div class="cout"><span>Kết quả</span>{{ pc.before.output }}</div>
+        </div>
+        <div class="cvs">VS</div>
+        <div class="cbox after">
+          <div class="clabel">✅ {{ pc.after.label }}</div>
+          <div class="cprompt">{{ pc.after.content }}</div>
+          <div class="cout"><span>Kết quả</span>{{ pc.after.output }}</div>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if p.links %}
+      <div class="links">
+        {% for l in p.links %}<a class="btn btn-ghost sm" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.icon or '🔗' }} {{ l.label }}</a>{% endfor %}
+      </div>
+      {% endif %}
+    </article>
+
+    <div class="pager reveal">
+      {% if prev_p %}<a href="project-{{ prev_p.id }}.html" class="pager-btn"><small>← Bài trước</small><span>{{ prev_p.title }}</span></a>{% else %}<span></span>{% endif %}
+      <a href="projects.html" class="btn btn-primary magnetic">Tất cả dự án</a>
+      {% if next_p %}<a href="project-{{ next_p.id }}.html" class="pager-btn right"><small>Bài tiếp →</small><span>{{ next_p.title }}</span></a>{% else %}<a href="conclusion.html" class="pager-btn right"><small>Tiếp →</small><span>Tổng kết</span></a>{% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

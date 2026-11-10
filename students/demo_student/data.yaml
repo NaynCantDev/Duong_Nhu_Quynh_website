@@ -1,0 +1,137 @@
+name: "Trần Minh Khoa"
+student_id: "B23DCVT123"
+class: "D23CQVT01-N"
+subject: "Nhập môn Công nghệ số và ứng dụng trí tuệ nhân tạo"
+email: "khoa.tmb23@student.example.edu.vn"
+major: "Công nghệ Thông tin"
+avatar_emoji: "🎓"
+short_bio: "Sinh viên năm 2 ngành CNTT – đam mê lập trình web và trí tuệ nhân tạo."
+
+about:
+  intro: "Xin chào! Mình là Trần Minh Khoa, sinh viên năm 2 ngành Công nghệ Thông tin. Mình yêu thích khám phá công nghệ mới, đặc biệt là AI và lập trình web."
+  hobbies: "Lập trình, chơi cờ vua, đọc sách khoa học viễn tưởng, chụp ảnh."
+  learning_goal: "Nắm vững các kỹ năng số cốt lõi trong thời đại 4.0, biết cách sử dụng AI có trách nhiệm trong học tập và công việc, đồng thời xây dựng nền tảng để phát triển sự nghiệp trong lĩnh vực công nghệ."
+  portfolio_goal: "Portfolio này là nơi tổng hợp và trình bày các sản phẩm học tập trong học phần CNS&AI, giúp mình lưu trữ hành trình học tập và chia sẻ năng lực bản thân với nhà tuyển dụng trong tương lai."
+
+projects:
+  - id: 1
+    title: "Thao tác cơ bản với tệp tin và thư mục"
+    chapter: "Chương 1 – Máy tính và các thiết bị ngoại vi"
+    score: 0.5
+    objective: "Xây dựng cấu trúc thư mục tối ưu cho việc học tập, áp dụng quy tắc đặt tên tệp nhất quán để dễ tìm kiếm và quản lý."
+    process: |
+      Bước 1: Phân tích nhu cầu lưu trữ tài liệu học tập theo môn học và học kỳ.
+      Bước 2: Thiết kế sơ đồ cấu trúc thư mục dạng cây (tree structure).
+      Bước 3: Tạo thực tế trên máy tính và đặt tên theo quy tắc: [MônHọc]_[ChủĐề]_[Ngày].ext.
+      Bước 4: Chụp ảnh màn hình minh họa cấu trúc đã xây dựng.
+      Khó khăn: Quyết định mức độ phân cấp thư mục phù hợp – giải quyết bằng nguyên tắc không quá 3 cấp.
+    tool: "Windows Explorer, Tree Command Prompt"
+    ai_use: "Không sử dụng AI"
+    result_desc: "Cấu trúc thư mục gồm 3 cấp: Học_Kỳ → Môn_Học → Loại_Tài_Liệu (Bài_Giảng, Bài_Tập, Dự_Án). Tệp đặt tên theo quy tắc YYYY-MM-DD_TenMon_ChuDe.ext."
+    result_img: "📁 HocKy2_2024/<br>&nbsp;&nbsp;📂 CNS_AI/<br>&nbsp;&nbsp;&nbsp;&nbsp;📄 2024-03-01_CNSAI_BaiGiang_Chuong1.pdf<br>&nbsp;&nbsp;&nbsp;&nbsp;📄 2024-03-08_CNSAI_BaiTap_Chuong1.docx<br>&nbsp;&nbsp;📂 LapTrinhWeb/<br>&nbsp;&nbsp;&nbsp;&nbsp;📄 2024-03-02_Web_HTML_CoBan.html"
+
+  - id: 2
+    title: "Tìm kiếm và đánh giá thông tin học thuật"
+    chapter: "Chương 2 – Khai thác dữ liệu và thông tin"
+    score: 0.75
+    objective: "Thành thạo sử dụng toán tử tìm kiếm nâng cao (Boolean operators) trên Google Scholar và các cơ sở dữ liệu học thuật; đánh giá độ tin cậy của nguồn thông tin."
+    process: |
+      Bước 1: Học các toán tử Boolean (AND, OR, NOT) và ký tự đặc biệt ("", site:, filetype:).
+      Bước 2: Thực hành tìm kiếm chủ đề "Trí tuệ nhân tạo trong giáo dục" trên Google Scholar.
+      Bước 3: Lập bảng đánh giá 5 nguồn tin theo tiêu chí CRAAP (Currency, Relevance, Authority, Accuracy, Purpose).
+      Khó khăn: Phân biệt tạp chí peer-reviewed và tạp chí predatory – giải quyết bằng cách kiểm tra chỉ số IF và danh sách Beall.
+      AI: Dùng ChatGPT để giải thích tiêu chí CRAAP, không dùng để tìm kiếm thay thế.
+    tool: "Google Scholar, Semantic Scholar, ChatGPT"
+    ai_use: "ChatGPT – giải thích khái niệm CRAAP Test"
+    result_desc: "Tìm được 12 bài báo học thuật liên quan. Lập bảng đánh giá 5 nguồn tin với điểm CRAAP từ 70–90/100."
+    result_img: "table"
+    table_headers: ["Nguồn", "Năm", "Tác giả", "Điểm CRAAP", "Đánh giá"]
+    table_rows:
+      - ["AI in Education (Nature)", "2023", "Zhang et al.", "92/100", "✅ Tin cậy cao"]
+      - ["Medium Blog Post", "2022", "Anonymous", "41/100", "❌ Không tin cậy"]
+      - ["UNESCO Report 2023", "2023", "UNESCO", "95/100", "✅ Tin cậy cao"]
+      - ["Wikipedia AI Article", "2024", "Community", "58/100", "⚠️ Tham khảo"]
+      - ["ACM Digital Library", "2023", "Kim & Lee", "88/100", "✅ Tin cậy cao"]
+
+  - id: 3
+    title: "Viết Prompt hiệu quả cho các tác vụ học tập"
+    chapter: "Chương 3 – Tổng quan về trí tuệ nhân tạo"
+    score: 0.75
+    objective: "Hiểu cơ chế hoạt động cơ bản của LLM và kỹ thuật prompt engineering; so sánh chất lượng đầu ra giữa prompt đơn giản và prompt được thiết kế tốt."
+    process: |
+      Bước 1: Nghiên cứu khung RASCEF (Role, Action, Steps, Context, Example, Format).
+      Bước 2: Viết 3 cặp prompt (đơn giản vs. cải tiến) cho các tác vụ: giải thích khái niệm, tóm tắt văn bản, lên kế hoạch học tập.
+      Bước 3: Chạy cả hai phiên bản trên ChatGPT-4o, chụp màn hình kết quả.
+      Bước 4: Phân tích và so sánh chất lượng đầu ra theo 4 tiêu chí: độ chính xác, độ chi tiết, định dạng, tính ứng dụng.
+      AI: ChatGPT-4o – đối tượng thực nghiệm (không dùng để viết báo cáo).
+    tool: "ChatGPT-4o, Notion (ghi chép)"
+    ai_use: "ChatGPT-4o – đối tượng thực nghiệm"
+    result_desc: "Prompt cải tiến cho kết quả chi tiết hơn 340%, có cấu trúc rõ ràng và sát yêu cầu hơn so với prompt gốc."
+    prompt_comparison:
+      before:
+        label: "Prompt ban đầu"
+        content: "Giải thích machine learning cho tôi"
+        output: "Machine learning là một nhánh của AI cho phép máy tính học từ dữ liệu..."
+      after:
+        label: "Prompt cải tiến"
+        content: "Bạn là giáo viên CNTT dạy sinh viên năm 2. Hãy giải thích khái niệm 'machine learning' theo cấu trúc: (1) định nghĩa đơn giản bằng ví dụ thực tế, (2) 3 loại học máy chính với ví dụ, (3) 2 ứng dụng trong đời sống sinh viên. Viết bằng tiếng Việt, dài khoảng 300 từ."
+        output: "**Machine Learning là gì?** Hãy tưởng tượng bạn dạy một đứa trẻ nhận biết con mèo bằng cách cho xem 1000 ảnh... [chi tiết 300 từ, có heading, ví dụ cụ thể]"
+
+  - id: 4
+    title: "Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm"
+    chapter: "Chương 4 – Giao tiếp và hợp tác trong môi trường số"
+    score: 0.5
+    objective: "Thành thạo sử dụng ít nhất 2 công cụ hợp tác trực tuyến để quản lý dự án nhóm; xây dựng quy trình làm việc số hiệu quả."
+    process: |
+      Bước 1: Nhóm 4 người thống nhất dùng Trello (quản lý task) và Google Docs (soạn thảo chung).
+      Bước 2: Tạo board Trello với 4 cột: To Do, In Progress, Review, Done.
+      Bước 3: Phân công công việc, đặt deadline cho từng thành viên.
+      Bước 4: Họp trực tuyến qua Google Meet 2 lần/tuần, ghi chú bằng Google Docs.
+      Khó khăn: Thành viên khác múi giờ khi đi thực tập – giải quyết bằng async communication qua Trello comments.
+      AI: Dùng Gemini để gợi ý quy tắc làm việc nhóm (team charter).
+    tool: "Trello, Google Docs, Google Meet, Gemini"
+    ai_use: "Gemini – gợi ý nội dung team charter"
+    result_desc: "Nhóm hoàn thành dự án đúng deadline với 15 task được phân công rõ ràng. Board Trello ghi nhận 100% task hoàn thành."
+
+  - id: 5
+    title: "Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung"
+    chapter: "Chương 5 – Sáng tạo nội dung số"
+    score: 1.0
+    objective: "Thực hành sử dụng công cụ AI tạo sinh (Generative AI) để sáng tạo và chỉnh sửa nội dung số; đánh giá vai trò và giới hạn của AI trong sáng tạo."
+    process: |
+      Bước 1: Lên ý tưởng infographic về "5 kỹ năng số sinh viên cần trong thế kỷ 21".
+      Bước 2: Dùng Canva AI để tạo bố cục và gợi ý màu sắc.
+      Bước 3: Dùng Midjourney để tạo hình minh họa background.
+      Bước 4: Kết hợp thủ công trong Canva, chỉnh sửa typography và layout.
+      Bước 5: Xuất bản lên Behance và LinkedIn.
+      Khó khăn: Hình AI tạo ra đôi khi không phù hợp văn hóa Việt – giải quyết bằng cách viết prompt chi tiết thêm "Vietnamese context, university student".
+      AI: Canva AI (layout), Midjourney (hình ảnh), ChatGPT (nội dung text).
+    tool: "Canva AI, Midjourney, ChatGPT, Behance"
+    ai_use: "Canva AI – gợi ý layout; Midjourney – tạo background; ChatGPT – viết caption"
+    result_desc: "Infographic 'Top 5 Digital Skills' định dạng A4 đứng, phong cách tối giản hiện đại. Đăng lên Behance nhận 47 lượt xem trong tuần đầu."
+
+  - id: 6
+    title: "Sử dụng AI có trách nhiệm trong học tập và nghiên cứu"
+    chapter: "Chương 6 – An toàn và liêm chính học thuật trong môi trường số"
+    score: 0.5
+    objective: "Xây dựng bộ nguyên tắc cá nhân về sử dụng AI có trách nhiệm; nhận biết ranh giới giữa hỗ trợ AI hợp lệ và vi phạm liêm chính học thuật."
+    process: |
+      Bước 1: Nghiên cứu chính sách AI của 3 trường đại học uy tín (MIT, NUS, ĐHQG Hà Nội).
+      Bước 2: Tổng hợp các tình huống "gray area" (vùng xám) trong sử dụng AI.
+      Bước 3: Xây dựng bộ 5 nguyên tắc cá nhân dựa trên nghiên cứu.
+      Bước 4: Trình bày dưới dạng "AI Ethics Personal Card" bằng Canva.
+      AI: Claude AI – hỗ trợ tra cứu và tóm tắt chính sách AI của các trường.
+    tool: "Claude AI, Canva, Google Scholar"
+    ai_use: "Claude AI – tra cứu chính sách AI đại học, tóm tắt văn bản dài"
+    result_desc: "Bộ 5 nguyên tắc: (1) Luôn ghi rõ AI đã hỗ trợ phần nào, (2) Tư duy phản biện kết quả AI, (3) Không dùng AI thay thế hiểu biết thực sự, (4) Bảo vệ dữ liệu cá nhân khi dùng AI, (5) Dùng AI để học, không phải để gian lận."
+
+conclusion:
+  experience: "Hành trình xây dựng portfolio này là một trong những trải nghiệm học tập có giá trị nhất trong học kỳ. Từ chỗ chưa biết gì về quản lý tệp tin đúng cách đến việc sử dụng AI một cách có trách nhiệm – mỗi chương mở ra một góc nhìn mới về thế giới số."
+  key_skills:
+    - "Prompt Engineering – kỹ năng quan trọng nhất trong kỷ nguyên AI"
+    - "Đánh giá nguồn tin học thuật với tiêu chí CRAAP"
+    - "Hợp tác trực tuyến bất đồng bộ (async collaboration)"
+    - "Sử dụng AI tạo sinh có kiểm soát và trách nhiệm"
+  highlight: "Bài tập ấn tượng nhất là Bài 3 – Prompt Engineering. Việc so sánh đầu ra giữa prompt đơn giản và prompt được thiết kế kỹ cho thấy rõ ràng: AI không phải công cụ thần kỳ, mà là công cụ cần kỹ năng để dùng hiệu quả."
+  challenge: "Thách thức lớn nhất là quản lý thời gian khi làm song song 6 bài tập với lịch học dày. Giải pháp là lên kế hoạch rõ ràng trên Trello và đặt deadline sớm hơn 2 ngày so với deadline thực tế."
+  future: "Tiếp tục phát triển kỹ năng AI, học thêm về data literacy và hướng tới chứng chỉ Google Digital Skills for Africa / Microsoft AI Skills."

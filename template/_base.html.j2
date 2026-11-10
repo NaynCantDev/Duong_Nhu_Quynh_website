@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Portfolio{% endblock %} · {{ name }}</title>
+<meta name="description" content="{{ short_bio }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>{{ avatar_emoji }}</text></svg>">
+</head>
+<body class="page-{{ page }}">
+<div class="bg" aria-hidden="true">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="grid-overlay"></div>
+</div>
+<div class="spotlight" aria-hidden="true"></div>
+<div id="progress"></div>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand"><span class="brand-emoji">{{ avatar_emoji }}</span><span>{{ name }}</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Mở menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="{{ 'active' if page == 'home' }}">Giới thiệu</a></li>
+      <li><a href="projects.html" class="{{ 'active' if page == 'projects' }}">Dự án</a></li>
+      <li><a href="conclusion.html" class="{{ 'active' if page == 'conclusion' }}">Tổng kết</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+{% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-name">{{ avatar_emoji }} {{ name }}</div>
+      <div class="muted">{{ student_id }} · {{ class }} · {{ major }}</div>
+    </div>
+    <div class="footer-right">
+      <div class="muted">{{ subject }}</div>
+      <a href="mailto:{{ email }}">{{ email }}</a>
+    </div>
+  </div>
+  <div class="container footer-copy">© {{ name }} — Portfolio học phần CNS&amp;AI</div>
+</footer>
+
+<button id="btt" aria-label="Lên đầu trang">↑</button>
+<script src="assets/main.js"></script>
+</body>
+</html>

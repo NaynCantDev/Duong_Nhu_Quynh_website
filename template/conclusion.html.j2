@@ -1,0 +1,55 @@
+{% extends "_base.html.j2" %}
+{% block title %}Tổng kết{% endblock %}
+{% block content %}
+{% set c = conclusion %}
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb reveal"><a href="index.html">Trang chủ</a><span>/</span>Tổng kết</nav>
+    <span class="section-label reveal">03 — Conclusion</span>
+    <h1 class="page-title reveal" data-delay="1">Tổng kết &amp; <span class="gradient-text">Cảm nhận</span></h1>
+  </div>
+</section>
+
+<section class="section pt-0">
+  <div class="container">
+    <blockquote class="quote glass reveal">
+      <span class="quote-mark">“</span>
+      <p>{{ c.experience }}</p>
+    </blockquote>
+
+    <div class="bento">
+      <article class="card glass tilt reveal wide">
+        <div class="card-icon">🧠</div>
+        <h3>Kiến thức &amp; kỹ năng thu được</h3>
+        <ul class="skill-list">
+          {% for s in c.key_skills %}<li class="reveal" data-delay="{{ loop.index0 }}"><span class="check">✓</span>{{ s }}</li>{% endfor %}
+        </ul>
+      </article>
+      <article class="card glass tilt reveal" data-delay="1">
+        <div class="card-icon">🏆</div>
+        <h3>Bài tâm đắc nhất</h3>
+        <p>{{ c.highlight }}</p>
+      </article>
+      <article class="card glass tilt reveal" data-delay="2">
+        <div class="card-icon">🧗</div>
+        <h3>Khó khăn &amp; cách vượt qua</h3>
+        <p>{{ c.challenge }}</p>
+      </article>
+      <article class="card glass tilt reveal wide" data-delay="1">
+        <div class="card-icon">🚀</div>
+        <h3>Định hướng tiếp theo</h3>
+        <p>{{ c.future }}</p>
+      </article>
+    </div>
+
+    <div class="cta-box glass reveal">
+      <h2>Cảm ơn bạn đã ghé thăm!</h2>
+      <p class="muted">Liên hệ: <a href="mailto:{{ email }}">{{ email }}</a></p>
+      <div class="hero-actions center">
+        <a href="projects.html" class="btn btn-ghost magnetic">← Xem lại dự án</a>
+        <a href="index.html" class="btn btn-primary magnetic">Về trang chủ</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

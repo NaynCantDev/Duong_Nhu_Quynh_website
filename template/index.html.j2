@@ -1,0 +1,77 @@
+{% extends "_base.html.j2" %}
+{% block title %}Giới thiệu{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <div class="chip reveal">✦ {{ subject }}</div>
+      <h1 class="hero-name reveal" data-delay="1">Xin chào, mình là<br><span class="gradient-text">{{ name }}</span></h1>
+      <p class="hero-bio reveal" data-delay="2"><span class="typed" data-text="{{ short_bio }}">{{ short_bio }}</span><span class="caret"></span></p>
+      <div class="hero-actions reveal" data-delay="3">
+        <a href="projects.html" class="btn btn-primary magnetic">Xem 6 bài tập <span class="arrow">→</span></a>
+        <a href="#about" class="btn btn-ghost magnetic">Về mình</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal" data-delay="2">
+      <div class="orb">
+        <div class="orb-ring"></div>
+        <div class="orb-ring r2"></div>
+        <div class="orb-core">{{ avatar_emoji }}</div>
+      </div>
+      <div class="float-tag t1">🤖 AI</div>
+      <div class="float-tag t2">💻 Web</div>
+      <div class="float-tag t3">📊 Data</div>
+    </div>
+  </div>
+  <a href="#about" class="scroll-hint" aria-label="Cuộn xuống"><span></span></a>
+</section>
+
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">01 — About Me</span>
+      <h2 class="section-title">Giới thiệu bản thân</h2>
+    </div>
+
+    <div class="stats">
+      <div class="stat glass reveal" data-delay="0"><div class="stat-num" data-count="{{ projects|length }}">{{ projects|length }}</div><div class="stat-label">Bài tập</div></div>
+      <div class="stat glass reveal" data-delay="1"><div class="stat-num" data-count="{{ total_score }}" data-decimals="{{ score_dec }}">{{ total_score_txt }}</div><div class="stat-label">/ {{ max_score }} điểm dự án</div></div>
+      <div class="stat glass reveal" data-delay="2"><div class="stat-num" data-count="{{ projects|length + 3 }}">{{ projects|length + 3 }}</div><div class="stat-label">Trang web</div></div>
+      <div class="stat glass reveal" data-delay="3"><div class="stat-num stat-text">{{ student_id }}</div><div class="stat-label">Mã sinh viên</div></div>
+    </div>
+
+    <div class="bento">
+      <article class="card glass tilt reveal wide">
+        <div class="card-icon">👋</div>
+        <h3>Về mình</h3>
+        <p>{{ about.intro }}</p>
+      </article>
+      <article class="card glass tilt reveal" data-delay="1">
+        <div class="card-icon">🎯</div>
+        <h3>Mục tiêu học tập</h3>
+        <p>{{ about.learning_goal }}</p>
+      </article>
+      <article class="card glass tilt reveal" data-delay="2">
+        <div class="card-icon">🎨</div>
+        <h3>Sở thích</h3>
+        <p>{{ about.hobbies }}</p>
+      </article>
+      <article class="card glass tilt reveal wide" data-delay="1">
+        <div class="card-icon">🗂️</div>
+        <h3>Mục tiêu Portfolio</h3>
+        <p>{{ about.portfolio_goal }}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-band">
+  <div class="container">
+    <div class="cta-box glass reveal">
+      <h2>Hành trình 6 chương học phần</h2>
+      <p class="muted">Từ quản lý tệp tin đến dùng AI có trách nhiệm — mỗi bài là một bước.</p>
+      <a href="projects.html" class="btn btn-primary magnetic">Khám phá dự án <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+{% endblock %}
