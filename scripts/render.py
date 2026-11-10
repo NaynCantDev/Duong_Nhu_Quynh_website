@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""render.py – đọc students/<id>/data.yaml → sinh website tĩnh vào dist/<id>/
+"""render.py – đọc students/<id>/data.yaml → sinh website tĩnh vào dist/
 
+Mỗi lần render ra website của ĐÚNG 1 sinh viên (dist/index.html là trang chủ).
 Cách dùng:
-    python scripts/render.py               # render tất cả sinh viên
-    python scripts/render.py demo_student  # render 1 người
+    python scripts/render.py                  # nếu students/ chỉ có 1 người
+    python scripts/render.py duong_nhu_quynh  # chỉ định người cần render
 """
 
 import re
@@ -65,15 +66,16 @@ def write(out_dir, name, html):
 
 
 def render_student(env, student_id):
+    """Render 1 sinh viên thẳng vào dist/ (index.html nằm ngay ở gốc site)."""
     data = load(student_id)
-    out_dir = DIST_DIR / student_id
-    if out_dir.exists():
-        shutil.rmtree(out_dir)
-    out_dir.mkdir(parents=True)
-    shutil.copytree(ASSETS_DIR, out_dir / "assets")
+    if DIST_DIR.exists():
+        shutil.rmtree(DIST_DIR)
+    DIST_DIR.mkdir(parents=True)
+    shutil.copytree(ASSETS_DIR, DIST_DIR / "assets")
+    (DIST_DIR / ".nojekyll").write_text("", encoding="utf-8")
 
-    write(out_dir, "index.html", env.get_template("index.html.j2").render(**data, page="home"))
-    write(out_dir, "projects.html", env.get_template("projects.html.j2").render(**data, page="projects"))
+    write(DIST_DIR, "index.html", env.get_template("index.html.j2").render(**data, page="home"))
+    write(DIST_DIR, "projects.html", env.get_template("projects.html.j2").render(**data, page="projects"))
 
     projects = data["projects"]
     for i, p in enumerate(projects):
@@ -82,29 +84,24 @@ def render_student(env, student_id):
         html = env.get_template("project.html.j2").render(
             **data, page="projects", project=p, prev_p=prev_p, next_p=next_p
         )
-        write(out_dir, f"project-{p['id']}.html", html)
+        write(DIST_DIR, f"project-{p['id']}.html", html)
 
-    write(out_dir, "conclusion.html", env.get_template("conclusion.html.j2").render(**data, page="conclusion"))
-    return data
-
-
-def render_hub(env, students):
-    """Trang gốc dist/index.html liệt kê tất cả portfolio (tiện khi làm cho nhiều người)."""
-    shutil.copytree(ASSETS_DIR, DIST_DIR / "assets", dirs_exist_ok=True)
-    html = env.get_template("hub.html.j2").render(students=students)
-    (DIST_DIR / "index.html").write_text(html, encoding="utf-8")
-    (DIST_DIR / ".nojekyll").write_text("", encoding="utf-8")
-    print("[OK] dist/index.html (hub)")
+    write(DIST_DIR, "conclusion.html", env.get_template("conclusion.html.j2").render(**data, page="conclusion"))
 
 
 def main():
     all_ids = sorted(d.name for d in STUDENTS_DIR.iterdir() if (d / "data.yaml").exists())
-    targets = sys.argv[1:] or all_ids
-    env = make_env()
-    for t in targets:
-        print(f"\n=== Rendering: {t} ===")
-        render_student(env, t)
-    render_hub(env, [load(s) for s in all_ids])
+    if len(sys.argv) > 1:
+        student_id = sys.argv[1]
+    elif len(all_ids) == 1:
+        student_id = all_ids[0]
+    else:
+        sys.exit(f"Có {len(all_ids)} sinh viên trong students/: {all_ids}\n"
+                 "Hãy chỉ định 1 người: python scripts/render.py <ma_sv>")
+    if student_id not in all_ids:
+        sys.exit(f"Không tìm thấy students/{student_id}/data.yaml")
+    print(f"=== Rendering: {student_id} → dist/ ===")
+    render_student(make_env(), student_id)
 
 
 if __name__ == "__main__":
