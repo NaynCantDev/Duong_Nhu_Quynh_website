@@ -16,7 +16,7 @@
     <div class="hero-visual reveal" data-delay="2">
       <div class="vinyl-wrap">
         <div class="vinyl">
-          <div class="vinyl-label">{{ avatar_emoji }}</div>
+          <div class="vinyl-label{{ ' has-photo' if avatar_url }}">{% if avatar_url %}<img src="{{ avatar_url }}" alt="Ảnh của {{ name }}">{% else %}{{ avatar_emoji }}{% endif %}</div>
         </div>
         <div class="tonearm" aria-hidden="true"></div>
       </div>

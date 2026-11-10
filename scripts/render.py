@@ -74,6 +74,16 @@ def render_student(env, student_id):
     shutil.copytree(ASSETS_DIR, DIST_DIR / "assets")
     (DIST_DIR / ".nojekyll").write_text("", encoding="utf-8")
 
+    # Ảnh đại diện (tùy chọn): students/<id>/<file> → dist/assets/<file>
+    if data.get("avatar"):
+        src = STUDENTS_DIR / student_id / data["avatar"]
+        if src.exists():
+            shutil.copy(src, DIST_DIR / "assets" / src.name)
+            data["avatar_url"] = f"assets/{src.name}"
+            print(f"  [OK] avatar: {src.name}")
+        else:
+            print(f"  [WARN] không thấy ảnh {src} → dùng emoji")
+
     write(DIST_DIR, "index.html", env.get_template("index.html.j2").render(**data, page="home"))
     write(DIST_DIR, "projects.html", env.get_template("projects.html.j2").render(**data, page="projects"))
 
