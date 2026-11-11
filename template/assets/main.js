@@ -84,6 +84,32 @@
     setTimeout(type, 700);
   }
 
+  /* 13. Lightbox cho ảnh minh họa */
+  const lb = $('#lightbox');
+  if (lb) {
+    const btns = $$('.shot-img');
+    const img = $('img', lb), cap = $('figcaption', lb);
+    let cur = 0;
+    const show = i => {
+      cur = (i + btns.length) % btns.length;
+      img.src = btns[cur].dataset.full;
+      cap.textContent = btns[cur].dataset.cap;
+    };
+    const open = i => { show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; };
+    const close = () => { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
+    btns.forEach((b, i) => b.addEventListener('click', () => open(i)));
+    $('.lb-close', lb).addEventListener('click', close);
+    $('.lb-prev', lb).addEventListener('click', e => { e.stopPropagation(); show(cur - 1); });
+    $('.lb-next', lb).addEventListener('click', e => { e.stopPropagation(); show(cur + 1); });
+    lb.addEventListener('click', e => { if (e.target === lb) close(); });
+    addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(cur - 1);
+      if (e.key === 'ArrowRight') show(cur + 1);
+    });
+  }
+
   /* 11. Nốt nhạc bay lên ở nền */
   const NOTES = ['♪', '♫', '♬', '♩', '𝄞'];
   const COLORS = ['#db5375', '#ec9192', '#729ea1', '#b5bd89', '#d9a66f'];

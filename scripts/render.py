@@ -100,6 +100,17 @@ def render_student(env, student_id):
                 print(f"  [WARN] bài {p['id']}: không thấy {src} → bỏ qua")
         if prod:
             prod["gallery"] = kept
+        for blk in prod.get("blocks") or []:
+            if blk.get("type") != "steps":
+                continue
+            for st in blk.get("items") or []:
+                src = STUDENTS_DIR / student_id / st["file"]
+                if src.exists():
+                    img_dir.mkdir(parents=True, exist_ok=True)
+                    shutil.copy(src, img_dir / src.name)
+                    st["src"] = f"assets/img/{src.name}"
+                else:
+                    print(f"  [WARN] bài {p['id']}: không thấy {src} → bỏ qua")
 
     write(DIST_DIR, "index.html", env.get_template("index.html.j2").render(**data, page="home"))
     write(DIST_DIR, "projects.html", env.get_template("projects.html.j2").render(**data, page="projects"))

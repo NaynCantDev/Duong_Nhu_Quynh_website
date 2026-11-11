@@ -1,7 +1,22 @@
 {% extends "_base.html.j2" %}
-{% block title %}Bài {{ project.id }} – {{ project.title }}{% endblock %}
+{% block title %}Bài {{ project.id }} – {{ project.title }}<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" aria-label="Đóng">✕</button>
+  <button class="lb-nav lb-prev" aria-label="Ảnh trước">‹</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button class="lb-nav lb-next" aria-label="Ảnh sau">›</button>
+</div>
+{% endblock %}
 
 {# ================= Block renderers ================= #}
+{% macro tree_node(it) %}
+{% if it is mapping %}
+<li><span class="tnode">{{ '📂' if it.children else '📁' }} {{ it.name }}</span>
+  {% if it.children %}<ul>{% for c in it.children %}{{ tree_node(c) }}{% endfor %}</ul>{% endif %}
+</li>
+{% else %}
+<li><span class="tnode leaf">{{ it if it[:1] in '📄📂📁🎵🖼' else '📁 ' ~ it }}</span></li>
+{% endif %}
+{% endmacro %}
 {% macro render_block(b) %}
 {% if b.title and b.type not in ['tree', 'showcase'] %}<h3 class="sub-title reveal">{{ b.title }}</h3>{% endif %}
 
@@ -11,11 +26,7 @@
   <ul class="tree">
     <li class="root"><span class="tnode">📂 <strong>{{ b.title }}</strong></span>
       <ul>
-      {% for it in b['items'] %}
-        <li><span class="tnode">{{ '📂' if it.children else '📁' }} {{ it.name }}</span>
-          {% if it.children %}<ul>{% for c in it.children %}<li><span class="tnode leaf">📁 {{ c }}</span></li>{% endfor %}</ul>{% endif %}
-        </li>
-      {% endfor %}
+      {% for it in b['items'] %}{{ tree_node(it) }}{% endfor %}
       </ul>
     </li>
   </ul>
@@ -157,6 +168,18 @@
 {% elif b.type == 'refs' %}
 <ol class="refs reveal">{% for r in b['items'] %}<li>{{ r }}</li>{% endfor %}</ol>
 
+{% elif b.type == 'steps' %}
+<div class="shots">
+  {% for st in b['items'] if st.src %}
+  <figure class="shot reveal" data-delay="{{ loop.index0 % 3 }}">
+    <button class="shot-img" data-full="{{ st.src }}" data-cap="Bước {{ loop.index }}: {{ st.caption }}" aria-label="Phóng to ảnh bước {{ loop.index }}">
+      <img src="{{ st.src }}" alt="{{ st.caption }}" loading="lazy"><span class="zoom">⤢</span>
+    </button>
+    <figcaption><span class="shot-num">{{ loop.index }}</span>{{ st.caption }}</figcaption>
+  </figure>
+  {% endfor %}
+</div>
+
 {% elif b.type == 'note' %}
 <div class="callout reveal"><span>💡</span><p>{{ b.text }}</p></div>
 {% endif %}
@@ -228,6 +251,14 @@
       {% endif %}
     </article>
 
+    {% if p.origin %}
+    <a class="origin glass reveal" href="{{ p.origin.url }}" target="_blank" rel="noopener">
+      <span class="origin-icon">📄</span>
+      <span class="origin-text"><small>Nguồn gốc bài làm</small>{{ p.origin.label }}</span>
+      <span class="origin-go">Mở ↗</span>
+    </a>
+    {% endif %}
+
     <div class="pager reveal">
       {% if prev_p %}<a href="project-{{ prev_p.id }}.html" class="pager-btn"><small>← Bài trước</small><span>{{ prev_p.title }}</span></a>{% else %}<span></span>{% endif %}
       <a href="projects.html" class="btn btn-primary magnetic">Tất cả dự án</a>
@@ -235,4 +266,10 @@
     </div>
   </div>
 </section>
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" aria-label="Đóng">✕</button>
+  <button class="lb-nav lb-prev" aria-label="Ảnh trước">‹</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button class="lb-nav lb-next" aria-label="Ảnh sau">›</button>
+</div>
 {% endblock %}

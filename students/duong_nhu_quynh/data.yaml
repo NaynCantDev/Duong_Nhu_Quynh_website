@@ -25,55 +25,71 @@ projects:
     section: "1.4"
     title: "Thao tác cơ bản với tệp tin và thư mục"
     chapter: "Chương 1 – Máy tính và các thiết bị ngoại vi"
-    objective: "Thiết lập một cấu trúc thư mục khoa học cho toàn bộ tài liệu học tập ngành Sư phạm Âm nhạc (bài giảng, bản nhạc, file ghi âm luyện tập, giáo án) và một quy tắc đặt tên tệp thống nhất. Kỹ năng rèn luyện: tạo – đổi tên – di chuyển – sao lưu tệp tin, tổ chức dữ liệu để tìm kiếm nhanh."
+    objective: "Thực hành các thao tác cơ bản với tệp tin và thư mục trên Windows bằng File Explorer: truy cập ổ đĩa và thư mục, tạo thư mục và tệp văn bản, đổi tên, sao chép (Copy), di chuyển (Cut), xóa tạm thời vào Thùng rác, xóa vĩnh viễn và khôi phục tệp từ Thùng rác (Recycle Bin). Kỹ năng rèn luyện: tổ chức thư mục có cấu trúc, đặt tên tệp rõ ràng và quản lý dữ liệu an toàn."
     process:
-      - "Bước 1: Thống kê các loại tài liệu đang có: slide bài giảng (PDF), bản nhạc (PDF/ảnh chụp), file ghi âm luyện thanh (M4A), giáo án (DOCX), video tiết dạy mẫu (MP4)."
-      - "Bước 2: Phác thảo sơ đồ cây thư mục theo nguyên tắc Học kỳ → Môn học → Loại tài liệu, tối đa 3 cấp."
-      - "Bước 3: Đặt quy tắc đặt tên tệp: Ngày_Môn_NộiDung_PhiênBản, viết không dấu, ngăn cách bằng dấu gạch dưới."
-      - "Bước 4: Tạo cấu trúc trên máy tính bằng File Explorer, đổi tên hàng loạt các tệp cũ theo quy tắc mới."
-      - "Bước 5: Đồng bộ thư mục gốc lên Google Drive để sao lưu và mở được trên điện thoại khi đi học."
-      - "Khó khăn: File ghi âm từ điện thoại có tên tự động khó phân biệt (VID_2026…, Recording 12…) – giải quyết bằng cách nghe lại, đổi tên ngay sau mỗi buổi luyện tập và thêm tiền tố ngày."
-    tool: "File Explorer (Windows), Google Drive"
+      - "Bước 1: Mở File Explorer, truy cập ổ đĩa C:\\ rồi vào thư mục Documents."
+      - "Bước 2: Trong Documents, tạo thư mục thực hành ThucHanh_DuongNhuQuynh."
+      - "Bước 3: Mở thư mục ThucHanh_DuongNhuQuynh, tạo tệp văn bản GhiChu.txt, sau đó đổi tên thành GhiChuQuanTrong.txt."
+      - "Bước 4: Tạo thư mục con TaiLieu bên trong ThucHanh_DuongNhuQuynh, rồi sao chép (Copy) tệp GhiChuQuanTrong.txt vào TaiLieu."
+      - "Bước 5: Tạo thêm tệp DiChuyen.txt và di chuyển (Cut – Paste) tệp này vào thư mục TaiLieu."
+      - "Bước 6: Trong TaiLieu, xóa tệp GhiChuQuanTrong.txt bằng lệnh Delete (tệp được chuyển vào Thùng rác)."
+      - "Bước 7: Xóa vĩnh viễn tệp DiChuyen.txt bằng Shift + Delete – Windows hiện hộp thoại xác nhận xóa vĩnh viễn, tệp không đi qua Thùng rác."
+      - "Bước 8: Mở Recycle Bin, chọn GhiChuQuanTrong.txt và Restore để khôi phục tệp về đúng thư mục TaiLieu."
+      - "Khó khăn: Dễ nhầm giữa xóa tạm thời và xóa vĩnh viễn – giải quyết bằng cách quan sát hộp thoại: Shift + Delete luôn hỏi “permanently delete” và tệp sẽ không thể khôi phục từ Thùng rác."
+    tool: "File Explorer (Windows 11), Recycle Bin"
     ai_use: "Không sử dụng AI"
+    origin:
+      label: "Bài tập Chương 1 – bản gốc trên Google Docs"
+      url: "https://docs.google.com/document/d/1TrIdNQvLe1vyC_6p2NqZMlyjpJ_NVU0Bw3HzKnHZGKw/edit?usp=sharing"
     product:
-      intro: "Cấu trúc thư mục đã thiết lập (thư mục gốc được đồng bộ lên Google Drive):"
+      intro: "Kết quả cuối cùng: cấu trúc thư mục thực hành sau khi hoàn thành toàn bộ các thao tác."
       blocks:
         - type: tree
-          title: "QUYNH_SPAN_HK1_2026-2027"
+          title: "Documents"
           items:
-            - name: "01_Thanh_nhac"
-              children: ["01_Bai_giang", "02_Ban_nhac", "03_Ghi_am_luyen_tap"]
-            - name: "02_Nhac_cu_Piano"
-              children: ["01_Bai_tap_ngon", "02_Tac_pham"]
-            - name: "03_Ly_thuyet_am_nhac"
-              children: ["01_Bai_giang", "02_Bai_tap"]
-            - name: "04_Phuong_phap_day_hoc_Am_nhac"
-              children: ["01_Giao_an", "02_Video_tiet_day_mau"]
-            - name: "05_CNS_AI"
-              children: ["Bai1_Thu_muc", "Bai2_Tim_kiem", "Bai3_Prompt", "Bai4_Hop_tac", "Bai5_AI_tao_sinh", "Bai6_AI_trach_nhiem"]
-            - name: "99_Luu_tru"
-              children: []
+            - name: "ThucHanh_DuongNhuQuynh"
+              children:
+                - "📄 GhiChuQuanTrong.txt"
+                - name: "TaiLieu"
+                  children: ["📄 GhiChuQuanTrong.txt (đã khôi phục từ Thùng rác)"]
         - type: table
-          title: "Quy tắc đặt tên tệp: YYYYMMDD_Mon_NoiDung_vX.ext"
-          headers: ["Thành phần", "Quy tắc", "Ví dụ"]
+          title: "Quy tắc đặt tên thư mục và tệp đã áp dụng"
+          headers: ["Quy tắc", "Giải thích", "Ví dụ trong bài"]
           rows:
-            - ["Ngày", "Năm-tháng-ngày viết liền, giúp tệp tự sắp xếp theo thời gian", "20261015"]
-            - ["Môn", "Viết tắt, không dấu", "ThanhNhac, Piano, LyThuyet, PPDH"]
-            - ["Nội dung", "Ngắn gọn, các từ nối bằng dấu gạch ngang", "LuyenThanh-Ma-Me-Mi"]
-            - ["Phiên bản", "v1, v2… hoặc final cho bản nộp", "v2, final"]
-        - type: examples
-          title: "Một số tệp sau khi đổi tên"
+            - ["Viết không dấu", "Tránh lỗi font và lỗi đường dẫn khi chia sẻ, tải lên mạng", "ThucHanh, TaiLieu"]
+            - ["Viết hoa chữ cái đầu mỗi từ, không dấu cách", "Dễ đọc mà không cần khoảng trắng", "GhiChuQuanTrong.txt, DiChuyen.txt"]
+            - ["Dấu gạch dưới “_” tách các phần", "Tách nội dung bài và tên người thực hiện", "ThucHanh_DuongNhuQuynh"]
+            - ["Tên thể hiện đúng nội dung", "Nhìn tên là biết tệp/thư mục dùng để làm gì", "TaiLieu, GhiChuQuanTrong"]
+        - type: table
+          title: "Các thao tác đã thực hành"
+          headers: ["Thao tác", "Cách thực hiện", "Phím tắt"]
+          rows:
+            - ["Tạo thư mục mới", "Chuột phải → New → Folder", "Ctrl + Shift + N"]
+            - ["Tạo tệp văn bản", "Chuột phải → New → Text Document", "—"]
+            - ["Đổi tên", "Chuột phải → Rename", "F2"]
+            - ["Sao chép", "Copy → Paste", "Ctrl + C → Ctrl + V"]
+            - ["Di chuyển", "Cut → Paste", "Ctrl + X → Ctrl + V"]
+            - ["Xóa vào Thùng rác", "Chuột phải → Delete", "Delete"]
+            - ["Xóa vĩnh viễn", "Giữ Shift khi xóa", "Shift + Delete"]
+            - ["Khôi phục", "Recycle Bin → chuột phải → Restore", "—"]
+        - type: steps
+          title: "Ảnh chụp minh họa từng bước (bấm vào ảnh để phóng to)"
           items:
-            - "20261015_ThanhNhac_LuyenThanh-Ma-Me-Mi_v1.m4a"
-            - "20261020_LyThuyet_HopAm-Ba_v2.pdf"
-            - "20261102_PPDH_GiaoAn-DayHat-Lop3_final.docx"
-            - "20261105_Piano_Gam-Do-Truong_v1.mp4"
+            - { file: "images/bai1_01.jpg", caption: "Mở File Explorer, truy cập vào ổ C:\\" }
+            - { file: "images/bai1_02.jpg", caption: "Từ ổ C:\\, truy cập vào thư mục Documents" }
+            - { file: "images/bai1_03.jpg", caption: "Trong Documents, tạo thư mục ThucHanh_DuongNhuQuynh" }
+            - { file: "images/bai1_04.jpg", caption: "Mở ThucHanh_DuongNhuQuynh, tạo tệp văn bản GhiChu.txt" }
+            - { file: "images/bai1_05.jpg", caption: "Đổi tên GhiChu.txt thành GhiChuQuanTrong.txt" }
+            - { file: "images/bai1_06.jpg", caption: "Tạo thư mục con TaiLieu trong ThucHanh_DuongNhuQuynh" }
+            - { file: "images/bai1_07.jpg", caption: "Mở TaiLieu và sao chép GhiChuQuanTrong.txt vào đây" }
+            - { file: "images/bai1_08.jpg", caption: "Quay lại ThucHanh_DuongNhuQuynh, tạo thêm tệp DiChuyen.txt" }
+            - { file: "images/bai1_09.jpg", caption: "Cắt (Cut) DiChuyen.txt và dán vào thư mục TaiLieu" }
+            - { file: "images/bai1_10.jpg", caption: "Xóa (Delete) GhiChuQuanTrong.txt trong thư mục TaiLieu" }
+            - { file: "images/bai1_11.jpg", caption: "Xóa vĩnh viễn DiChuyen.txt trong TaiLieu – hộp thoại xác nhận “permanently delete”" }
+            - { file: "images/bai1_12.jpg", caption: "Vào Recycle Bin, khôi phục (Restore) GhiChuQuanTrong.txt về thư mục TaiLieu" }
         - type: note
-          text: "Nguyên tắc: không quá 3 cấp thư mục · đánh số đầu tên để cố định thứ tự · không dùng dấu tiếng Việt và khoảng trắng để tránh lỗi khi tải lên/chia sẻ · thư mục 99_Luu_tru chứa tài liệu học kỳ cũ."
+          text: "Bài học rút ra: Delete chỉ đưa tệp vào Thùng rác nên vẫn khôi phục được; Shift + Delete xóa vĩnh viễn nên cần kiểm tra kỹ trước khi thực hiện. Đặt tên thư mục và tệp không dấu, rõ nghĩa giúp tìm kiếm và chia sẻ dễ dàng hơn."
       gallery: []
-      # gallery:
-      #   - { file: "images/bai1_cay_thu_muc.png", caption: "Cấu trúc thư mục trên File Explorer" }
-      #   - { file: "images/bai1_google_drive.png", caption: "Thư mục gốc đã đồng bộ lên Google Drive" }
 
   - id: 2
     section: "2.4"
