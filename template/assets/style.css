@@ -381,6 +381,10 @@ tbody tr:hover { background: rgba(236,145,146,.08); }
 .footer-copy { margin-top: 24px; font-size: .78rem; color: var(--muted); }
 
 
+.goal-text { columns: 2 340px; column-gap: 36px; }
+.goal-text p { margin-bottom: 14px; break-inside: avoid; }
+.goal-text p:first-letter { font-family: var(--serif); font-size: 1.6em; font-weight: 800; color: var(--rasp); }
+
 /* ---------- Nav sub-menu (Dự án → 6 bài) ---------- */
 .has-sub { position: relative; }
 .caret-down { font-size: .7em; margin-left: 2px; display: inline-block; transition: transform .3s; }

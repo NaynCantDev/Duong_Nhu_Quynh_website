@@ -61,19 +61,14 @@
         <p class="big">{{ about.hobbies }}</p>
         <div class="mini-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
       </article>
-      <article class="card glass reveal full">
+      <article class="card glass reveal full goal-card">
         <div class="card-icon">🎯</div>
-        <h3>Mục tiêu học tập</h3>
-        <p>{{ about.learning_goal }}</p>
+        <h3>Mục tiêu học tập &amp; định hướng phát triển cá nhân</h3>
+        <div class="goal-text">
+          {% for para in about.learning_goal.split('\n\n') if para.strip() %}<p>{{ para.strip() }}</p>{% endfor %}
+        </div>
       </article>
-      {% if about.development %}
-      <article class="card glass reveal wide">
-        <div class="card-icon">🌱</div>
-        <h3>Phát triển &amp; định hướng cá nhân</h3>
-        <p>{{ about.development }}</p>
-      </article>
-      {% endif %}
-      <article class="card glass tilt reveal accent-teal" data-delay="1">
+      <article class="card glass tilt reveal accent-teal full" data-delay="1">
         <div class="card-icon">🗂️</div>
         <h3>Mục tiêu Portfolio</h3>
         <p>{{ about.portfolio_goal }}</p>
