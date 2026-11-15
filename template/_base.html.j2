@@ -58,10 +58,12 @@
       {% if email %}<a href="mailto:{{ email }}">{{ email }}</a>{% endif %}
     </div>
   </div>
-  <div class="container footer-copy">© {{ name }} — Portfolio học phần CNS&amp;AI</div>
+  <div class="container footer-copy">© {{ name }} — Portfolio học phần CNS&amp;AI <span class="egg-hint">· 🥚 gõ d·o·r·e·m·i hoặc chạm 𝄞 ba lần</span></div>
 </footer>
 
 <button id="btt" aria-label="Lên đầu trang">♪</button>
+<button id="snd" type="button" aria-pressed="false" title="Bật / tắt âm thanh"><span class="snd-on">🔊</span><span class="snd-off">🔇</span></button>
+<div id="toast" role="status" aria-live="polite"></div>
 <script src="assets/main.js"></script>
 </body>
 </html>

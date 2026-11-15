@@ -14,11 +14,12 @@
     </div>
 
     <div class="hero-visual reveal" data-delay="2">
-      <div class="vinyl-wrap">
+      <div class="vinyl-wrap" id="player" role="button" tabindex="0" aria-label="Bấm để phát / dừng nhạc">
         <div class="vinyl">
           <div class="vinyl-label{{ ' has-photo' if avatar_url }}">{% if avatar_url %}<img src="{{ avatar_url }}" alt="Ảnh của {{ name }}">{% else %}{{ avatar_emoji }}{% endif %}</div>
         </div>
         <div class="tonearm" aria-hidden="true"></div>
+        <span class="play-hint" id="playHint">▶ Bấm đĩa để nghe</span>
       </div>
       <div class="equalizer" aria-hidden="true">
         {% for i in range(18) %}<span style="--i:{{ i }}"></span>{% endfor %}

@@ -188,6 +188,7 @@
 {# ================= Page ================= #}
 {% block content %}
 {% set p = project %}
+{% set CH = ['C','Am','F','G','Em','C'] %}
 <section class="page-hero project-hero">
   <div class="watermark" aria-hidden="true">{{ '%02d' % p.id }}</div>
   <div class="container">
@@ -197,6 +198,7 @@
     <div class="meta-row reveal" data-delay="2">
       <span class="chip">🛠 {{ p.tool }}</span>
       <span class="chip ai">🤖 {{ p.ai_use }}</span>
+      <button type="button" class="chip chord-chip" data-chord="{{ CH[(p.id - 1) % 6] }}" title="Mỗi bài là một hợp âm — đi hết 6 bài là trọn vòng hòa âm">🎼 Hợp âm {{ CH[(p.id - 1) % 6] }}</button>
     </div>
   </div>
 </section>
@@ -260,9 +262,9 @@
     {% endif %}
 
     <div class="pager reveal">
-      {% if prev_p %}<a href="project-{{ prev_p.id }}.html" class="pager-btn"><small>← Bài trước</small><span>{{ prev_p.title }}</span></a>{% else %}<span></span>{% endif %}
+      {% if prev_p %}<a href="project-{{ prev_p.id }}.html" class="pager-btn" data-chord="{{ CH[(prev_p.id - 1) % 6] }}"><small>← Bài trước · {{ CH[(prev_p.id - 1) % 6] }}</small><span>{{ prev_p.title }}</span></a>{% else %}<span></span>{% endif %}
       <a href="projects.html" class="btn btn-primary magnetic">Tất cả dự án</a>
-      {% if next_p %}<a href="project-{{ next_p.id }}.html" class="pager-btn right"><small>Bài tiếp →</small><span>{{ next_p.title }}</span></a>{% else %}<a href="conclusion.html" class="pager-btn right"><small>Tiếp →</small><span>Tổng kết</span></a>{% endif %}
+      {% if next_p %}<a href="project-{{ next_p.id }}.html" class="pager-btn right" data-chord="{{ CH[(next_p.id - 1) % 6] }}"><small>{{ CH[(next_p.id - 1) % 6] }} · Bài tiếp →</small><span>{{ next_p.title }}</span></a>{% else %}<a href="conclusion.html" class="pager-btn right" data-chord="END"><small>Kết · Tiếp →</small><span>Tổng kết</span></a>{% endif %}
     </div>
   </div>
 </section>
